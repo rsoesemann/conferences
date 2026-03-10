@@ -59,7 +59,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
-  padding: 5.5rem 3.5vw 3rem;
+  padding: 5.5rem 3.5vw 8rem;
   position: relative;
   scroll-snap-align: start;
 }
@@ -221,6 +221,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 }
 
 /* Multi-image: stacked vertically */
+/* Multi-image: stacked vertically. First image gets 30%, second gets 70%. */
 .tip-showcase.showcase-multi {
   display: flex;
   flex-direction: column;
@@ -228,12 +229,13 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 }
 .tip-showcase.showcase-multi img {
   position: relative;
-  flex: 1;
   min-height: 0;
   width: 100%;
   object-fit: cover;
   object-position: center top;
 }
+.tip-showcase.showcase-multi img:first-child { flex: 3; }
+.tip-showcase.showcase-multi img:last-child { flex: 7; }
 
 /* Placeholder when no real screenshot yet */
 .tip-showcase .showcase-placeholder {

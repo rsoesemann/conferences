@@ -139,29 +139,24 @@ nav .slide-counter {
   user-select: none;
   z-index: 0;
 }
-.slide-tip { align-items: stretch; }
 .slide-tip .slide-inner {
   position: relative; z-index: 1;
-  display: flex;
-  flex-direction: column;
-  padding-right: 36%;
 }
 
 .tip-header {
   margin-bottom: 3rem;
 }
-
-.tip-h {
-  font-family: 'Lexend', sans-serif;
-  font-size: clamp(2.8rem, 4.5vw, 3.4rem);
-  font-weight: 600;
-  color: var(--purple);
-  line-height: 1.15;
-}
-.tip-h .tip-num {
+.tip-num {
   color: var(--pink);
   font-weight: 700;
   margin-right: 0.3em;
+}
+.tip-h {
+  font-family: 'Lexend', sans-serif;
+  font-size: clamp(2.6rem, 4.2vw, 3.2rem);
+  font-weight: 600;
+  color: var(--purple);
+  line-height: 1.15;
 }
 
 .tip-bullets {
@@ -173,8 +168,8 @@ nav .slide-counter {
   position: relative;
   padding-left: 2rem;
   margin-bottom: 1.6rem;
-  font-size: clamp(1.4rem, 2.4vw, 2.4rem);
-  line-height: 1.4;
+  font-size: 2.4rem;
+  line-height: 1.45;
   color: var(--text);
 }
 .tip-bullets li::before {
@@ -196,14 +191,10 @@ nav .slide-counter {
 }
 
 /* --- SHOWCASE: full-height right-side screenshot crop window --- */
-/* Use --crop-x (default: center) to shift the visible area left/right.
-   Examples: style="--crop-x: 30%" shows left third,
-             style="--crop-x: 70%" shows right third.
-   Use --showcase-w (default: 34%) to widen/narrow the window. */
 .tip-showcase {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: var(--showcase-w, 34%);
+  width: 34%;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -213,7 +204,7 @@ nav .slide-counter {
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 160px;
+  width: 120px;
   z-index: 2;
   background: linear-gradient(to right, var(--bg, #fff), transparent);
   pointer-events: none;
@@ -228,7 +219,7 @@ nav .slide-counter {
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: var(--crop-x, center) top;
+  object-position: center center;
 }
 
 /* Multi-image: stacked vertically */
@@ -266,25 +257,14 @@ nav .slide-counter {
 }
 .tip-content { flex: 1; min-width: 0; }
 
-/* --- ORG BUTLER FOOTER (pinned to bottom via margin-top:auto in flex) --- */
+/* --- ORG BUTLER FOOTER --- */
 .tip-butler {
-  margin-top: auto;
-  padding: 1.2rem 2rem 1.2rem 1.2rem;
+  margin-top: 2.5rem;
+  padding: 1.4rem 2rem;
   background: rgba(53,38,148,0.04);
   border-left: 4px solid var(--purple);
   border-radius: 0 12px 12px 0;
-  max-width: 56%;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
 }
-.tip-butler-icon {
-  width: 44px; height: 44px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  object-fit: contain;
-}
-.tip-butler-text { flex: 1; min-width: 0; }
 .tip-butler-label {
   font-family: 'Lexend', sans-serif;
   font-size: 0.95rem;
@@ -451,9 +431,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p>Open source. Everything we learned. <a href="https://github.com/aquivalabs/my-org-butler" target="_blank" style="color:var(--blue)">github.com/aquivalabs/my-org-butler</a></p>
     </div>
   </div>
@@ -479,9 +457,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p><code>ExploreOrgSchema</code> + <code>QueryRecordsWithSoql</code> &mdash; two actions handle what would need dozens.</p>
     </div>
   </div>
@@ -507,10 +483,8 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
-      <p>Read, modify and deploy data &amp; metadata via <code>CallRestApi</code> and <code>CallToolingApi</code>.</p>
+      <div class="tip-butler-label">In My Org Butler</div>
+      <p><code>CallRestApi</code>, <code>CallMetadataApi</code>, <code>CallToolingApi</code>, <code>CallGitHubApi</code> &mdash; custom Apex actions. Plus External Services version for zero-code.</p>
     </div>
   </div>
 </div>
@@ -535,9 +509,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p>Hybrid retriever on Opportunities &mdash; vector ranked results no SOQL could produce.</p>
     </div>
   </div>
@@ -563,9 +535,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p><code>AnswerFromFiles</code> &mdash; ask &ldquo;payment terms?&rdquo; and get the answer from your SOW.</p>
     </div>
   </div>
@@ -592,9 +562,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p><code>AgentMemory</code> + <code>LoadCustomInstructions</code> &mdash; persistent context, zero code.</p>
     </div>
   </div>
@@ -620,9 +588,7 @@ nav .slide-counter {
       </div>
     </div>
     <div class="tip-butler">
-      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
-      <div class="tip-butler-text">
-      <div class="tip-butler-label">Demo in My Org Butler</div>
+      <div class="tip-butler-label">In My Org Butler</div>
       <p><code>HeadlessAgent</code> + <code>PlanForLater</code> &mdash; &ldquo;Every Monday, check stale opps and Slack me.&rdquo;</p>
     </div>
   </div>

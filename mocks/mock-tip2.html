@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:   #032D60;
+    --blue:   #0176D3;
+    --border: #D8DEE4;
+    --bg-canvas: #F3F5F8;
+    --bg-node:   #FFFFFF;
+    --bg-io:     #FAFAFA;
+    --text:      #181818;
+    --soft:      #555;
+    --muted:     #888;
+    --font: system-ui, -apple-system, sans-serif;
+  }
+  body {
+    width: 920px; height: 900px;
+    display: flex; flex-direction: column;
+    overflow: hidden; font-family: var(--font);
+    background: #fff;
+  }
+
+  /* ── HEADER ── */
+  .hdr {
+    background: var(--navy); height: 48px; flex-shrink: 0;
+    display: flex; align-items: center; padding: 0 16px; gap: 10px;
+  }
+  .hdr-title { color:#fff; font-weight:600; font-size:14px; }
+  .hdr-sep   { color:rgba(255,255,255,.35); font-size:14px; }
+  .hdr-agent { color:rgba(255,255,255,.75); font-size:13px; }
+  .hdr-space { flex:1; }
+  .btn { border:1px solid rgba(255,255,255,.3); border-radius:4px;
+         color:#fff; font-size:12px; padding:4px 10px; background:transparent; }
+  .btn-d { background:rgba(255,255,255,.15); }
+
+  /* ── BODY ROW ── */
+  .body { flex:1; display:flex; overflow:hidden; }
+
+  /* LEFT RAIL */
+  .rail {
+    width: 48px; flex-shrink:0;
+    background: #F3F3F3; border-right:1px solid var(--border);
+    display:flex; flex-direction:column; align-items:center;
+    padding-top:12px; gap:10px;
+  }
+  .rail-icon {
+    width:28px; height:28px; border-radius:6px;
+    background: #BBBAB8; opacity:.6;
+  }
+  .rail-icon.active { background: var(--blue); opacity:1; }
+
+  /* CANVAS */
+  .canvas {
+    flex:1; min-width:0;
+    background: var(--bg-canvas);
+    overflow-y:auto; padding:12px 14px;
+    display:flex; flex-direction:column; gap:5px;
+    border-right:1px solid var(--border);
+  }
+
+  /* NODE CARDS */
+  .node { background:var(--bg-node); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .node-hdr {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:6px 10px; background:#FAFBFC; border-bottom:1px solid var(--border);
+    font-size:12px; font-weight:600; color:var(--text);
+  }
+  .node-hdr .t { color:var(--muted); font-weight:400; font-size:11px; }
+  .node-action .node-hdr { border-left:3px solid var(--blue); }
+  .node-body { padding:7px 10px; font-size:12px; line-height:1.45; color:var(--soft); }
+  .node-body strong { color:var(--text); }
+
+  /* IO SIDE-BY-SIDE */
+  .io-row { display:flex; border-top:1px solid var(--border); }
+  .io-pane { flex:1; min-width:0; background:var(--bg-io); padding:6px 8px; }
+  .io-pane + .io-pane { border-left:1px solid var(--border); }
+  .io-label { font-size:9px; font-weight:700; letter-spacing:.1em;
+              color:var(--muted); text-transform:uppercase; margin-bottom:3px; }
+  .io-code  { font-family:'Menlo','Consolas',monospace; font-size:10px;
+              line-height:1.45; color:var(--text); white-space:pre-wrap; word-break:break-word; }
+
+  /* Marker highlight — yellow Stabilo highlighter */
+  .hl { background: rgba(255, 235, 59, 0.55); border-radius: 2px; padding: 1px 5px; }
+
+  /* Prompt node */
+  .node-prompt .node-hdr { background:#EDF5FF; border-left:3px solid var(--blue); }
+  .node-prompt .node-body { font-size:12px; color:var(--text); }
+  .node-prompt .node-body strong { color:var(--navy); }
+
+  /* CONVERSATION SIDEBAR */
+  .sidebar {
+    width: 300px; flex-shrink:0;
+    background:#fff; display:flex; flex-direction:column; overflow:hidden;
+  }
+  .sb-hdr {
+    padding:9px 14px; font-size:11px; font-weight:700; color:var(--muted);
+    text-transform:uppercase; letter-spacing:.1em;
+    border-bottom:1px solid var(--border); background:#FAFBFC;
+  }
+  .chat-area { flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:10px; }
+
+  /* Messages */
+  .msg { display:flex; gap:7px; align-items:flex-start; }
+  .msg.user { flex-direction:row-reverse; }
+  .av { width:26px; height:26px; border-radius:50%; flex-shrink:0;
+        display:flex; align-items:center; justify-content:center;
+        font-size:10px; font-weight:700; }
+  .av-u { background:var(--blue); color:#fff; }
+  .av-b { background:var(--navy); color:#fff; font-size:12px; }
+  .bbl { max-width:220px; padding:7px 10px; border-radius:10px; font-size:12px; line-height:1.45; }
+  .bbl-u { background:#E8F2FF; color:var(--text); border-radius:10px 2px 10px 10px; }
+  .bbl-b { background:#F5F5F5; color:var(--text); border-radius:2px 10px 10px 10px; width:220px; }
+  .bbl-b p { margin-bottom:5px; }
+  .bbl-b ul { padding-left:14px; }
+  .bbl-b li { margin-bottom:4px; }
+  .bbl-b a  { color:var(--blue); text-decoration:none; font-weight:500; }
+  .bbl-b .meta { color:var(--muted); font-size:11px; }
+
+  /* Input bar */
+  .chat-input { border-top:1px solid var(--border); padding:8px 10px;
+                display:flex; gap:6px; align-items:center; background:#FAFBFC; }
+  .chat-input input { flex:1; border:1px solid var(--border); border-radius:4px;
+                      padding:5px 8px; font-size:12px; background:#fff;
+                      color:var(--muted); outline:none; }
+  .send { width:28px; height:28px; border-radius:4px; background:var(--blue);
+          display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .send svg { width:14px; height:14px; fill:#fff; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <span class="hdr-title">Agentforce Builder</span>
+  <span class="hdr-sep">|</span>
+  <span class="hdr-agent">My Org Butler</span>
+  <div class="hdr-space"></div>
+  <button class="btn">Batch Test</button>
+  <button class="btn btn-d">Deactivate</button>
+</div>
+
+<div class="body">
+
+  <!-- LEFT RAIL -->
+  <div class="rail">
+    <div class="rail-icon active"></div>
+    <div class="rail-icon"></div>
+    <div class="rail-icon"></div>
+    <div class="rail-icon"></div>
+  </div>
+
+  <!-- CANVAS -->
+  <div class="canvas">
+
+    <div class="node node-prompt">
+      <div class="node-hdr">User Prompt</div>
+      <div class="node-body">The last deployment to production failed. Create a <strong>GitHub issue</strong> with the error details.</div>
+    </div>
+
+    <div class="node">
+      <div class="node-hdr"><span>Reasoning</span><span class="t">0.41s</span></div>
+      <div class="node-body">I need to first <strong>get the deployment error</strong> from the Tooling API, then <strong>create a GitHub issue</strong> with the error message and component list.</div>
+    </div>
+
+    <div class="node node-action">
+      <div class="node-hdr"><span>Action: <span class="hl">Call Tooling API</span></span><span class="t">0.33s</span></div>
+      <div class="io-row">
+        <div class="io-pane">
+          <div class="io-label">Input</div>
+          <div class="io-code">GET /services/data/v62.0/
+tooling/query/?q=
+SELECT Status,ErrorMessage,
+ CreatedDate
+FROM DeployRequest
+ORDER BY CreatedDate DESC
+LIMIT 1</div>
+        </div>
+        <div class="io-pane">
+          <div class="io-label">Output</div>
+          <div class="io-code">{ "records": [{
+  "Status": "Failed",
+  "ErrorMessage":
+    "MyTrigger: Missing
+     null check on
+     Account.Rating",
+  "CreatedDate":
+    "2026-03-10T14:22:00Z"
+}]}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node node-action">
+      <div class="node-hdr"><span>Action: <span class="hl">Call GitHub API</span></span><span class="t">0.48s</span></div>
+      <div class="io-row">
+        <div class="io-pane">
+          <div class="io-label">Input</div>
+          <div class="io-code">POST /repos/aquivalabs/
+  my-org-butler/issues
+{ "title": "Deploy fail:
+   MyTrigger null check",
+  "body": "The deploy on
+   Mar 10 failed.\n\n
+   **Error:** Missing null
+   check on Account.Rating",
+  "labels": ["bug","deploy"]
+}</div>
+        </div>
+        <div class="io-pane">
+          <div class="io-label">Output</div>
+          <div class="io-code">{ "number": 42,
+  "html_url": "https://
+    github.com/aquivalabs/
+    my-org-butler/issues/42",
+  "state": "open" }</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /canvas -->
+
+  <!-- CONVERSATION -->
+  <div class="sidebar">
+    <div class="sb-hdr">Conversation</div>
+    <div class="chat-area">
+
+      <div class="msg user">
+        <div class="av av-u">RS</div>
+        <div class="bbl bbl-u">Last deploy failed — create a GitHub issue with the error</div>
+      </div>
+
+      <div class="msg">
+        <div class="av av-b">🤖</div>
+        <div class="bbl bbl-b">
+          <p>Done. I pulled the error from the Tooling API and created:</p>
+          <ul>
+            <li><a href="#">Issue #42</a> — Deploy fail: MyTrigger null check</li>
+            <li><span class="meta">Labels: bug, deploy</span></li>
+            <li><a href="#">View on GitHub →</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Ask a follow-up…" disabled>
+      <div class="send"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -42,7 +42,7 @@ body {
 /* --- NAV --- */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0.45rem 2.5rem;
+  padding: 0.6rem 2.5rem;
   display: flex; justify-content: space-between; align-items: center;
   backdrop-filter: blur(20px);
   background: rgba(255,255,255,0.92);
@@ -59,7 +59,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   min-height: 100vh;
   display: flex;
   align-items: flex-start;
-  padding: 5.5rem 3.5vw 10rem;
+  padding: 5.5rem 3.5vw 5.5rem;
   position: relative;
   scroll-snap-align: start;
 }
@@ -116,16 +116,32 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 
 /* --- INTRO SLIDE --- */
 .slide-intro { background: var(--bg-warm); }
+.slide-intro .tip-showcase { top: 2.2rem; }
 .slide-intro .tip-showcase::before { background: linear-gradient(to right, var(--bg-warm), transparent); }
+.slide-intro .tip-showcase::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 240px;
+  z-index: 2;
+  background: linear-gradient(to bottom,
+    transparent 0px,
+    transparent 44px,
+    var(--bg-warm) 90px,
+    var(--bg-warm) 160px,
+    transparent 240px
+  );
+  pointer-events: none;
+}
 
 /* --- TIP SLIDES --- */
 .slide-tip { border-top: 1px solid var(--blue-light); position: relative; overflow: hidden; }
 .slide-tip:nth-child(even) { background: var(--bg-warm); }
 .slide-tip .bg-num {
   position: absolute;
-  left: -3vw; bottom: -12vh;
+  left: -5vw; bottom: -28vh;
   font-family: 'Lexend', sans-serif;
-  font-size: clamp(18rem, 30vw, 26rem);
+  font-size: clamp(36rem, 63vw, 54rem);
   font-weight: 800;
   color: var(--pink);
   opacity: 0.08;
@@ -220,6 +236,22 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   object-fit: cover;
   object-position: var(--crop-x, center) top;
 }
+
+/* Mock screenshots: start below the slide title, run to bottom edge */
+.tip-showcase.showcase-mock {
+  width: 52%;
+  top: 11rem;  /* moved up: navy bar now sits between title and first bullet */
+  bottom: 0;
+}
+.tip-showcase.showcase-mock img {
+  object-fit: contain;
+  object-position: right top;
+}
+/* Narrow gradient — just softens the left edge; title is dark on light bg, readable without fade */
+.tip-showcase.showcase-mock::before {
+  width: 100px;
+}
+
 
 /* Multi-image: stacked vertically */
 /* Multi-image: stacked vertically. First image gets 30%, second gets 70%. */
@@ -428,8 +460,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- INTRO -->
 <div class="slide slide-intro slide-tip" data-slide="1">
   <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Screenshot: My Org Butler in action</span></div>
-    <!-- Replace placeholder with: <img src="screenshot.png" alt="My Org Butler"> -->
+    <div class="showcase-placeholder"><span>Intro screenshot</span></div>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -458,8 +489,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 1 ================================================ -->
 <div class="slide slide-tip" data-slide="2">
   <div class="bg-num">1</div>
-  <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Agent exploring schema + writing SOQL dynamically</span></div>
+  <div class="tip-showcase showcase-mock">
+    <img src="screenshots/mock-tip1.png" alt="Tip 1 – bold generic actions">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -487,8 +518,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 2 ================================================ -->
 <div class="slide slide-tip" data-slide="3">
   <div class="bg-num">2</div>
-  <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Agent chaining REST calls to read, check &amp; create records</span></div>
+  <div class="tip-showcase showcase-mock">
+    <img src="screenshots/mock-tip2.png" alt="Tip 2 – API calls">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -517,7 +548,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="4">
   <div class="bg-num">3</div>
   <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Semantic similarity results vs. SOQL results</span></div>
+    <div class="showcase-placeholder"><span>Tip 3 screenshot</span></div>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -546,7 +577,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="5">
   <div class="bg-num">4</div>
   <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Agent citing the actual SOW document in its answer</span></div>
+    <div class="showcase-placeholder"><span>Tip 4 screenshot</span></div>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -606,7 +637,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="7">
   <div class="bg-num">6</div>
   <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Slack notification from agent that ran overnight</span></div>
+    <div class="showcase-placeholder"><span>Tip 6 screenshot</span></div>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">

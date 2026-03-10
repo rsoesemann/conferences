@@ -255,23 +255,34 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 /* --- ORG BUTLER FOOTER --- */
 .tip-butler {
   margin-top: 2.5rem;
-  padding: 1.4rem 2rem;
+  padding: 1rem 1.6rem;
   background: rgba(53,38,148,0.04);
   border-left: 4px solid var(--purple);
   border-radius: 0 12px 12px 0;
+  max-width: 55%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
+.tip-butler-icon {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.tip-butler-body { flex: 1; min-width: 0; }
 .tip-butler-label {
   font-family: 'Lexend', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--purple);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.15rem;
 }
 .tip-butler p {
-  font-size: 1.5rem;
-  line-height: 1.45;
+  font-size: 1.1rem;
+  line-height: 1.35;
   color: var(--text);
   margin: 0;
 }
@@ -424,8 +435,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p>Open source. Everything we learned. <a href="https://github.com/aquivalabs/my-org-butler" target="_blank" style="color:var(--blue)">github.com/aquivalabs/my-org-butler</a></p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p>Open source. Everything we learned. <a href="https://github.com/aquivalabs/my-org-butler" target="_blank" style="color:var(--blue)">github.com/aquivalabs/my-org-butler</a></p>
+      </div>
     </div>
   </div>
 </div>
@@ -450,8 +464,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p><code>ExploreOrgSchema</code> + <code>QueryRecordsWithSoql</code> &mdash; two actions handle what would need dozens.</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>ExploreOrgSchema</code> + <code>QueryRecordsWithSoql</code> &mdash; two actions handle what would need dozens.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -476,8 +493,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p><code>CallRestApi</code>, <code>CallMetadataApi</code>, <code>CallToolingApi</code>, <code>CallGitHubApi</code> &mdash; custom Apex actions. Plus External Services version for zero-code.</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>CallRestApi</code>, <code>CallMetadataApi</code>, <code>CallToolingApi</code>, <code>CallGitHubApi</code> &mdash; custom Apex actions. Plus External Services version for zero-code.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -502,8 +522,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p>Hybrid retriever on Opportunities &mdash; vector ranked results no SOQL could produce.</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p>Hybrid retriever on Opportunities &mdash; vector ranked results no SOQL could produce.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -528,8 +551,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p><code>AnswerFromFiles</code> &mdash; ask &ldquo;payment terms?&rdquo; and get the answer from your SOW.</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>AnswerFromFiles</code> &mdash; ask &ldquo;payment terms?&rdquo; and get the answer from your SOW.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -555,8 +581,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p><code>AgentMemory</code> + <code>LoadCustomInstructions</code> &mdash; persistent context, zero code.</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>AgentMemory</code> + <code>LoadCustomInstructions</code> &mdash; persistent context, zero code.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -581,8 +610,11 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       </div>
     </div>
     <div class="tip-butler">
-      <div class="tip-butler-label">In My Org Butler</div>
-      <p><code>HeadlessAgent</code> + <code>PlanForLater</code> &mdash; &ldquo;Every Monday, check stale opps and Slack me.&rdquo;</p>
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>HeadlessAgent</code> + <code>PlanForLater</code> &mdash; &ldquo;Every Monday, check stale opps and Slack me.&rdquo;</p>
+      </div>
     </div>
   </div>
 </div>

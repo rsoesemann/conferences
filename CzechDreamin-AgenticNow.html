@@ -186,10 +186,13 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 }
 
 /* --- SHOWCASE: full-height right-side screenshot crop window --- */
+/* --- SHOWCASE: full-height right-side screenshot crop window ---
+   Use --crop-x on .tip-showcase to shift the visible area (default: center).
+   e.g. style="--crop-x: 30%" shows left portion, "70%" shows right portion. */
 .tip-showcase {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: 34%;
+  width: 42%;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -199,7 +202,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   content: '';
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 120px;
+  width: 160px;
   z-index: 2;
   background: linear-gradient(to right, var(--bg, #fff), transparent);
   pointer-events: none;
@@ -214,7 +217,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: var(--crop-x, center) top;
 }
 
 /* Multi-image: stacked vertically */

@@ -230,6 +230,9 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   position: relative;
   flex: 1;
   min-height: 0;
+  width: 100%;
+  object-fit: cover;
+  object-position: center top;
 }
 
 /* Placeholder when no real screenshot yet */
@@ -567,8 +570,9 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="6">
   <div class="bg-num">5</div>
   <div class="tip-showcase showcase-multi">
-    <!-- Two screenshots stacked: agent learning + memory record -->
-    <div class="showcase-placeholder"><span>Agent learning preferences + memory record</span></div>
+    <!-- Top: Memory record detail page | Bottom: Conversation showing memory in action -->
+    <img src="tip5-memory-record.png" alt="MyOrgButler Memory record — Prefers Amount and CloseDate for opportunities">
+    <img src="tip5-memory-conversation.png" alt="Agent conversation learning user preferences and applying memory">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">

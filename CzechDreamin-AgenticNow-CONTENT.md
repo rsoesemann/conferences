@@ -65,7 +65,9 @@
 - Persist preferences, decisions, tasks across sessions.
 - Memory turns a tool into a colleague.
 - **Butler:** `AgentMemory` + `LoadCustomInstructions` — persistent context, zero code.
-- **Showcase:** Agent learning preferences + memory record
+- **Showcase (2 stacked images, showcase-multi):**
+  - TOP: `tip5-memory-record.png` — Salesforce record detail page showing a "MyOrgButler Memory" record titled "Prefers Amount and CloseDate for opportunities". Content field says "When showing opportunities, include Amount and CloseDate fields." Created by User User on 3/2/2026.
+  - BOTTOM: `tip5-memory-conversation.png` — Agentforce Builder conversation preview. Left side shows agent reasoning with "Action Launched: Store Custom Instruction" and the JSON input/output. Right side shows the chat: user asks for 3 most urgent opportunities, agent responds with a list, user asks for more detailed textual summaries, agent says "Got it! From now on, I'll provide more detailed textual summaries" and re-responds with expanded opportunity details including stage, amounts, and close dates.
 
 ### Slide 7 — Tip 6: Make agents autonomous with headless (PURPLE accent slide)
 - Chat is step one. Real pattern: no user, just triggers.
@@ -147,6 +149,18 @@
 2. Find the slide's `<div class="tip-showcase">`
 3. Replace the placeholder div with: `<img src="filename.png" alt="Description">`
 4. Optionally add `style="--crop-x: 40%"` to the `.tip-showcase` div to shift the crop window
+5. For two stacked screenshots, use `class="tip-showcase showcase-multi"` and add two `<img>` tags
+
+### Screenshot Files Needed
+| Slide | File(s) | Status | Description |
+|-------|---------|--------|-------------|
+| Intro | TBD | PLACEHOLDER | My Org Butler in action |
+| Tip 1 | TBD | PLACEHOLDER | Agent exploring schema + writing SOQL dynamically |
+| Tip 2 | TBD | PLACEHOLDER | Agent chaining REST calls to read, check & create records |
+| Tip 3 | TBD | PLACEHOLDER | Semantic similarity results vs. SOQL results |
+| Tip 4 | TBD | PLACEHOLDER | Agent citing the actual SOW document in its answer |
+| Tip 5 | `tip5-memory-record.png` + `tip5-memory-conversation.png` | WIRED UP (needs files in folder) | Memory record detail + agent conversation with memory |
+| Tip 6 | TBD | PLACEHOLDER | Slack notification from agent that ran overnight |
 
 ---
 

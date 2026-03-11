@@ -14,230 +14,179 @@
     --text:      #181818;
     --soft:      #555;
     --muted:     #888;
+    --green:     #2E7D32;
+    --red:       #C62828;
     --font: system-ui, -apple-system, sans-serif;
   }
   body {
-    width: 920px; height: 900px;
+    width: 540px; height: 1060px;
     display: flex; flex-direction: column;
     overflow: hidden; font-family: var(--font);
-    background: #fff;
+    background: transparent;
   }
 
-  /* ── HEADER ── */
-  .hdr {
-    background: var(--navy); height: 48px; flex-shrink: 0;
-    display: flex; align-items: center; padding: 0 16px; gap: 10px;
-  }
-  .hdr-title { color:#fff; font-weight:600; font-size:14px; }
-  .hdr-sep   { color:rgba(255,255,255,.35); font-size:14px; }
-  .hdr-agent { color:rgba(255,255,255,.75); font-size:13px; }
-  .hdr-space { flex:1; }
-  .btn { border:1px solid rgba(255,255,255,.3); border-radius:4px;
-         color:#fff; font-size:12px; padding:4px 10px; background:transparent; }
-  .btn-d { background:rgba(255,255,255,.15); }
-
-  /* ── BODY ROW ── */
-  .body { flex:1; display:flex; overflow:hidden; }
-
-  /* LEFT RAIL */
-  .rail {
-    width: 48px; flex-shrink:0;
-    background: #F3F3F3; border-right:1px solid var(--border);
-    display:flex; flex-direction:column; align-items:center;
-    padding-top:12px; gap:10px;
-  }
-  .rail-icon {
-    width:28px; height:28px; border-radius:6px;
-    background: #BBBAB8; opacity:.6;
-  }
-  .rail-icon.active { background: var(--blue); opacity:1; }
-
-  /* CANVAS */
+  /* ── CANVAS (no chrome, just the node flow) ── */
   .canvas {
-    flex:1; min-width:0;
-    background: var(--bg-canvas);
-    overflow-y:auto; padding:12px 14px;
-    display:flex; flex-direction:column; gap:5px;
-    border-right:1px solid var(--border);
+    flex: 1; min-height: 0;
+    overflow-y: auto; padding: 24px 18px;
+    display: flex; flex-direction: column; gap: 10px;
   }
 
-  /* NODE CARDS */
-  .node { background:var(--bg-node); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  /* ── CONNECTOR ARROW between nodes ── */
+  .connector {
+    display: flex; justify-content: center; padding: 4px 0;
+  }
+  .connector svg { width: 18px; height: 18px; fill: var(--muted); }
+
+  /* ── NODE CARDS ── */
+  .node {
+    background: var(--bg-node); border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  }
   .node-hdr {
-    display:flex; justify-content:space-between; align-items:center;
-    padding:6px 10px; background:#FAFBFC; border-bottom:1px solid var(--border);
-    font-size:12px; font-weight:600; color:var(--text);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 16px; background: #FAFBFC; border-bottom: 1px solid var(--border);
+    font-size: 15px; font-weight: 600; color: var(--text);
   }
-  .node-hdr .t { color:var(--muted); font-weight:400; font-size:11px; }
-  .node-action .node-hdr { border-left:3px solid var(--blue); }
-  .node-body { padding:7px 10px; font-size:12px; line-height:1.45; color:var(--soft); }
-  .node-body strong { color:var(--text); }
+  .node-hdr .t { color: var(--muted); font-weight: 400; font-size: 13px; }
+  .node-body {
+    padding: 12px 16px; font-size: 15px; line-height: 1.55; color: var(--soft);
+  }
+  .node-body strong { color: var(--text); }
 
-  /* IO SIDE-BY-SIDE */
-  .io-row { display:flex; border-top:1px solid var(--border); }
-  .io-pane { flex:1; min-width:0; background:var(--bg-io); padding:6px 8px; }
-  .io-pane + .io-pane { border-left:1px solid var(--border); }
-  .io-label { font-size:9px; font-weight:700; letter-spacing:.1em;
-              color:var(--muted); text-transform:uppercase; margin-bottom:3px; }
-  .io-code  { font-family:'Menlo','Consolas',monospace; font-size:10px;
-              line-height:1.45; color:var(--text); white-space:pre-wrap; word-break:break-word; }
+  /* Action node — blue left border */
+  .node-action .node-hdr { border-left: 3px solid var(--blue); }
 
-  /* Marker highlight — yellow Stabilo highlighter */
+  /* Error node — red left border + tinted background */
+  .node-error .node-hdr { border-left: 3px solid var(--red); background: #FFF5F5; }
+  .node-error .node-body { background: #FFFAFA; }
+
+  /* Success node — green left border */
+  .node-success .node-hdr { border-left: 3px solid var(--green); }
+
+  /* Prompt node — blue tint */
+  .node-prompt .node-hdr { background: #EDF5FF; border-left: 3px solid var(--blue); }
+  .node-prompt .node-body { font-size: 16px; color: var(--text); font-weight: 500; }
+
+  /* IO side-by-side */
+  .io-row { display: flex; border-top: 1px solid var(--border); }
+  .io-pane { flex: 1; min-width: 0; background: var(--bg-io); padding: 10px 14px; }
+  .io-pane + .io-pane { border-left: 1px solid var(--border); }
+  .io-label {
+    font-size: 10px; font-weight: 700; letter-spacing: .1em;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 3px;
+  }
+  .io-code {
+    font-family: 'Menlo','Consolas', monospace; font-size: 13px;
+    line-height: 1.5; color: var(--text); white-space: pre-wrap; word-break: break-word;
+  }
+
+  /* Highlighter */
   .hl { background: rgba(255, 235, 59, 0.55); border-radius: 2px; padding: 1px 5px; }
 
-  /* Prompt node */
-  .node-prompt .node-hdr { background:#EDF5FF; border-left:3px solid var(--blue); }
-  .node-prompt .node-body { font-size:12px; color:var(--text); }
-  .node-prompt .node-body strong { color:var(--navy); }
-
-  /* CONVERSATION SIDEBAR */
-  .sidebar {
-    width: 300px; flex-shrink:0;
-    background:#fff; display:flex; flex-direction:column; overflow:hidden;
+  /* Error badge in IO */
+  .err-badge {
+    display: inline-block; background: #FFCDD2; color: var(--red);
+    font-size: 10px; font-weight: 700; padding: 2px 7px;
+    border-radius: 4px; margin-bottom: 2px;
   }
-  .sb-hdr {
-    padding:9px 14px; font-size:11px; font-weight:700; color:var(--muted);
-    text-transform:uppercase; letter-spacing:.1em;
-    border-bottom:1px solid var(--border); background:#FAFBFC;
+
+  /* Strikethrough for wrong query */
+  .strike { text-decoration: line-through; opacity: 0.5; }
+
+  /* Field list in schema output */
+  .field-tag {
+    display: inline-block; background: #E8F5E9; color: var(--green);
+    font-size: 12px; font-weight: 600; padding: 4px 8px;
+    border-radius: 3px; margin: 1px 2px;
+    font-family: 'Menlo','Consolas', monospace;
   }
-  .chat-area { flex:1; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:10px; }
-
-  /* Messages */
-  .msg { display:flex; gap:7px; align-items:flex-start; }
-  .msg.user { flex-direction:row-reverse; }
-  .av { width:26px; height:26px; border-radius:50%; flex-shrink:0;
-        display:flex; align-items:center; justify-content:center;
-        font-size:10px; font-weight:700; }
-  .av-u { background:var(--blue); color:#fff; }
-  .av-b { background:var(--navy); color:#fff; font-size:12px; }
-  .bbl { max-width:220px; padding:7px 10px; border-radius:10px; font-size:12px; line-height:1.45; }
-  .bbl-u { background:#E8F2FF; color:var(--text); border-radius:10px 2px 10px 10px; }
-  .bbl-b { background:#F5F5F5; color:var(--text); border-radius:2px 10px 10px 10px; width:220px; }
-  .bbl-b p { margin-bottom:5px; }
-  .bbl-b ul { padding-left:14px; }
-  .bbl-b li { margin-bottom:4px; }
-  .bbl-b a  { color:var(--blue); text-decoration:none; font-weight:500; }
-  .bbl-b .meta { color:var(--muted); font-size:11px; }
-
-  /* Input bar */
-  .chat-input { border-top:1px solid var(--border); padding:8px 10px;
-                display:flex; gap:6px; align-items:center; background:#FAFBFC; }
-  .chat-input input { flex:1; border:1px solid var(--border); border-radius:4px;
-                      padding:5px 8px; font-size:12px; background:#fff;
-                      color:var(--muted); outline:none; }
-  .send { width:28px; height:28px; border-radius:4px; background:var(--blue);
-          display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .send svg { width:14px; height:14px; fill:#fff; }
+  .field-tag.picked {
+    background: var(--green); color: #fff;
+  }
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <span class="hdr-title">Agentforce Builder</span>
-  <span class="hdr-sep">|</span>
-  <span class="hdr-agent">My Org Butler</span>
-  <div class="hdr-space"></div>
-  <button class="btn">Batch Test</button>
-  <button class="btn btn-d">Deactivate</button>
-</div>
+<div class="canvas">
 
-<div class="body">
-
-  <!-- LEFT RAIL -->
-  <div class="rail">
-    <div class="rail-icon active"></div>
-    <div class="rail-icon"></div>
-    <div class="rail-icon"></div>
-    <div class="rail-icon"></div>
+  <!-- ═══ 1. USER PROMPT ═══ -->
+  <div class="node node-prompt">
+    <div class="node-hdr">User Prompt</div>
+    <div class="node-body">Which opportunity should I work on next?</div>
   </div>
 
-  <!-- CANVAS -->
-  <div class="canvas">
+  <div class="connector"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0l-4-4m4 4l4-4"/><path d="M12 4v12" stroke="#bbb" stroke-width="2" fill="none"/><path d="M8 12l4 4 4-4" stroke="#bbb" stroke-width="2" fill="none"/></svg></div>
 
-    <div class="node node-prompt">
-      <div class="node-hdr">User Prompt</div>
-      <div class="node-body">Show me all open opportunities and their current <strong>delivery risk</strong></div>
-    </div>
-
-    <div class="node">
-      <div class="node-hdr"><span>Reasoning</span><span class="t">0.38s</span></div>
-      <div class="node-body">"Delivery risk" isn't a standard Salesforce field. There must be a <strong>custom object</strong> — let me explore it to find the risk field.</div>
-    </div>
-
-    <div class="node node-action">
-      <div class="node-hdr"><span>Action: <span class="hl">Explore Org Schema</span></span><span class="t">0.27s</span></div>
-      <div class="io-row">
-        <div class="io-pane">
-          <div class="io-label">Input</div>
-          <div class="io-code">{ "object":
-  "Delivery_Project__c" }</div>
-        </div>
-        <div class="io-pane">
-          <div class="io-label">Output</div>
-          <div class="io-code">{ "fields": ["Name","Risk_Status__c",
-  "RAG_Color__c"], "picklist":
-  { "Risk_Status__c": ["On Track",
-    "At Risk","Critical"] } }</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="node node-action">
-      <div class="node-hdr"><span>Action: <span class="hl">Query Records with SOQL</span></span><span class="t">0.52s</span></div>
-      <div class="io-row">
-        <div class="io-pane">
-          <div class="io-label">Input</div>
-          <div class="io-code">SELECT Name, Amount, CloseDate,
-  (SELECT Risk_Status__c,
-   RAG_Color__c
-   FROM Delivery_Projects__r)
+  <!-- ═══ 2. FIRST ATTEMPT — WRONG FIELD ═══ -->
+  <div class="node node-error">
+    <div class="node-hdr"><span>Action: <span class="hl">Query Records with SOQL</span></span><span class="t">0.3s</span></div>
+    <div class="io-row">
+      <div class="io-pane">
+        <div class="io-label">Input</div>
+        <div class="io-code">SELECT Name, Amount,
+<span class="strike">Priority_Score__c</span>
 FROM Opportunity
 WHERE IsClosed = false
-ORDER BY CloseDate ASC</div>
-        </div>
-        <div class="io-pane">
-          <div class="io-label">Output</div>
-          <div class="io-code">[{ "Name": "Acme Renewal",
-  "Amount": 150000,
-  "Delivery_Projects__r": [{
-    "Risk_Status__c": "Critical",
-    "RAG_Color__c": "Red" }] },
-{ "Name": "Globex Expansion",
-  "Risk_Status__c": "On Track" }]</div>
-        </div>
+ORDER BY <span class="strike">Priority_Score__c</span> DESC
+LIMIT 5</div>
       </div>
-    </div>
-
-  </div><!-- /canvas -->
-
-  <!-- CONVERSATION -->
-  <div class="sidebar">
-    <div class="sb-hdr">Conversation</div>
-    <div class="chat-area">
-
-      <div class="msg user">
-        <div class="av av-u">RS</div>
-        <div class="bbl bbl-u">Show me open opportunities and their delivery risk</div>
+      <div class="io-pane">
+        <div class="io-label">Output</div>
+        <div class="io-code"><span class="err-badge">ERROR</span>
+No such column
+'Priority_Score__c'
+on entity 'Opportunity'</div>
       </div>
-
-      <div class="msg">
-        <div class="av av-b">🤖</div>
-        <div class="bbl bbl-b">
-          <p>Here are your open opportunities with current delivery risk:</p>
-          <ul>
-            <li><a href="#">Acme Renewal</a><br><span class="meta">$150k · closes Mar 16</span></li>
-            <li><a href="#">Globex Expansion</a><br><span class="meta">$87k · closes Apr 3</span></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Ask a follow-up…" disabled>
-      <div class="send"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></div>
     </div>
   </div>
 
-</div>
+  <div class="connector"><svg viewBox="0 0 24 24"><path d="M12 4v12" stroke="#bbb" stroke-width="2" fill="none"/><path d="M8 12l4 4 4-4" stroke="#bbb" stroke-width="2" fill="none"/></svg></div>
+
+  <!-- ═══ 3. SELF-CORRECTION — EXPLORE SCHEMA ═══ -->
+  <div class="node node-action">
+    <div class="node-hdr"><span>Action: <span class="hl">Explore Org Schema</span></span><span class="t">0.2s</span></div>
+    <div class="io-row">
+      <div class="io-pane">
+        <div class="io-label">Input</div>
+        <div class="io-code">{ "object": "Opportunity" }</div>
+      </div>
+      <div class="io-pane">
+        <div class="io-label">Output</div>
+        <div class="io-code"><span class="field-tag">Name</span> <span class="field-tag">Amount</span> <span class="field-tag">StageName</span> <span class="field-tag">CloseDate</span> <span class="field-tag picked">Engagement_Score__c</span> <span class="field-tag">Next_Step__c</span> <span class="field-tag">LastActivityDate</span> <span class="field-tag picked">Days_Since_Last_Activity__c</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="connector"><svg viewBox="0 0 24 24"><path d="M12 4v12" stroke="#bbb" stroke-width="2" fill="none"/><path d="M8 12l4 4 4-4" stroke="#bbb" stroke-width="2" fill="none"/></svg></div>
+
+  <!-- ═══ 4. SECOND ATTEMPT — CORRECT QUERY ═══ -->
+  <div class="node node-success">
+    <div class="node-hdr"><span>Action: <span class="hl">Query Records with SOQL</span></span><span class="t">0.4s</span></div>
+    <div class="io-row">
+      <div class="io-pane">
+        <div class="io-label">Input</div>
+        <div class="io-code">SELECT Name, Amount,
+  Engagement_Score__c,
+  Days_Since_Last_Activity__c
+FROM Opportunity
+WHERE IsClosed = false
+ORDER BY Engagement_Score__c DESC
+LIMIT 5</div>
+      </div>
+      <div class="io-pane">
+        <div class="io-label">Output</div>
+        <div class="io-code">✓ 2 records
+[{ Name: "Acme AI Platform",
+   Engagement_Score__c: 92 },
+ { Name: "Globex Expansion",
+   Engagement_Score__c: 78 }]</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /canvas -->
+
 </body>
 </html>

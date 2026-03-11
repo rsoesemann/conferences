@@ -251,6 +251,14 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 .tip-showcase.showcase-mock::before {
   width: 100px;
 }
+/* No gradient at all — mock already has its own left-side whitespace */
+.tip-showcase.showcase-no-fade::before {
+  display: none;
+}
+/* Narrower showcase — ~40% screen, more room for text */
+.tip-showcase.showcase-narrow {
+  width: 40%;
+}
 
 
 /* Multi-image: stacked vertically */
@@ -547,8 +555,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 3 ================================================ -->
 <div class="slide slide-tip" data-slide="4">
   <div class="bg-num">3</div>
-  <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Tip 3 screenshot</span></div>
+  <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
+    <img src="screenshots/mock-tip3.png" alt="Tip 3 – semantic search vs SOQL">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -605,10 +613,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 5 ================================================ -->
 <div class="slide slide-tip" data-slide="6">
   <div class="bg-num">5</div>
-  <div class="tip-showcase showcase-multi">
-    <!-- Top: Memory record detail page | Bottom: Conversation showing memory in action -->
-    <img src="screenshots/Screenshot_2026-03-10_at_10_53_24.png" alt="MyOrgButler Memory record">
-    <img src="screenshots/Screenshot_2026-03-10_at_10_54_56.png" alt="Agent conversation with memory">
+  <div class="tip-showcase showcase-mock showcase-no-fade">
+    <img src="screenshots/mock-tip6.png" alt="Tip 6 – agent memory load and store">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -636,8 +642,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 6 ================================================ -->
 <div class="slide slide-tip" data-slide="7">
   <div class="bg-num">6</div>
-  <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Tip 6 screenshot</span></div>
+  <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
+    <img src="screenshots/mock-tip7.png" alt="Tip 6 – headless agent">
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">

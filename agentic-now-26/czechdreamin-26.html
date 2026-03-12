@@ -240,8 +240,12 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 /* Mock screenshots: start below the slide title, run to bottom edge */
 .tip-showcase.showcase-mock {
   width: 52%;
-  top: 11rem;  /* moved up: navy bar now sits between title and first bullet */
+  top: 11rem;  /* default: below the title */
   bottom: 0;
+}
+/* Builder mocks (tips 1, 2): start right below the Aquiva header */
+.tip-showcase.showcase-mock:not(.showcase-no-fade) {
+  top: 2.5rem;
 }
 .tip-showcase.showcase-mock img {
   object-fit: contain;
@@ -258,7 +262,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 }
 /* Narrow gradient — just softens the left edge; title is dark on light bg, readable without fade */
 .tip-showcase.showcase-mock::before {
-  width: 100px;
+  width: 320px;
 }
 /* No gradient at all — mock already has its own left-side whitespace */
 .tip-showcase.showcase-no-fade::before {
@@ -537,7 +541,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="3">
   <div class="bg-num">2</div>
   <div class="tip-showcase showcase-mock">
-    <iframe src="mocks/mock-tip2.html" title="Tip 2 – API calls" style="--mock-w:680px;--mock-h:520px"></iframe>
+    <iframe src="mocks/mock-tip2.html" title="Tip 2 – API calls" style="--mock-w:680px;--mock-h:760px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -557,7 +561,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p><code>CallRestApi</code>, <code>CallMetadataApi</code>, <code>CallToolingApi</code>, <code>CallGitHubApi</code> &mdash; custom Apex actions. Plus External Services version for zero-code.</p>
+        <p>Salesforce APIs via Apex. GitHub API via no-code External Services (OpenAPI spec).</p>
       </div>
     </div>
 </div>
@@ -566,7 +570,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="4">
   <div class="bg-num">3</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
-    <iframe src="mocks/mock-tip3.html" title="Tip 3 – semantic search vs SOQL" style="--mock-w:540px;--mock-h:900px"></iframe>
+    <iframe src="mocks/mock-tip3.html" title="Tip 3 – semantic search vs SOQL" style="--mock-w:540px;--mock-h:750px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -594,19 +598,19 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 4 ================================================ -->
 <div class="slide slide-tip" data-slide="5">
   <div class="bg-num">4</div>
-  <div class="tip-showcase">
-    <div class="showcase-placeholder"><span>Tip 4 screenshot</span></div>
+  <div class="tip-showcase showcase-mock showcase-no-fade">
+    <iframe src="mocks/mock-tip4.html" title="Tip 4 – ground prompts on files" style="--mock-w:620px;--mock-h:740px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
-      <h2 class="tip-h">Ground your prompts on your messy files</h2>
+      <h2 class="tip-h">One prompt for all your files — RAG included</h2>
     </div>
     <div class="tip-body">
       <div class="tip-content">
         <ul class="tip-bullets">
-          <li>Ungrounded agents invent answers with confidence. Grounding fixes that.</li>
-          <li>Prompt Templates attach files &amp; records to every request.</li>
-          <li>Three flavors: single file, record context, full doc library.</li>
+          <li>Grounding comes in many flavors: a single file, related records, semantic search across your doc library.</li>
+          <li>Don&rsquo;t build three actions. One Flex prompt with optional inputs handles all of them.</li>
+          <li>Data Cloud hybrid retriever = RAG on unstructured documents. Same simplicity as SOQL on structured data.</li>
         </ul>
       </div>
     </div>
@@ -615,7 +619,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p><code>AnswerFromFiles</code> &mdash; ask &ldquo;payment terms?&rdquo; and get the answer from your SOW.</p>
+        <p><code>AnswerFromFiles</code> &mdash; one action, one prompt. Attached SOW, related files, or full doc library &mdash; it figures it out.</p>
       </div>
     </div>
 </div>
@@ -623,7 +627,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 5 ================================================ -->
 <div class="slide slide-tip" data-slide="6">
   <div class="bg-num">5</div>
-  <div class="tip-showcase showcase-mock showcase-no-fade">
+  <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip6.html" title="Tip 5 – agent memory load and store" style="--mock-w:680px;--mock-h:700px"></iframe>
   </div>
   <div class="slide-inner reveal">

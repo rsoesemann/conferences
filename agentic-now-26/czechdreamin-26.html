@@ -656,8 +656,8 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <!-- TIP 6 ================================================ -->
 <div class="slide slide-tip" data-slide="7">
   <div class="bg-num">6</div>
-  <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
-    <iframe src="mocks/mock-tip7.html" title="Tip 6 – headless agent" style="--mock-w:460px;--mock-h:900px"></iframe>
+  <div class="tip-showcase showcase-mock showcase-no-fade">
+    <iframe src="mocks/mock-tip7.html" title="Tip 6 – headless agent" style="--mock-w:540px;--mock-h:800px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -741,6 +741,21 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// --- Auto-scale iframes to fill container height ---
+function scaleIframes() {
+  document.querySelectorAll('.showcase-mock iframe').forEach(iframe => {
+    const container = iframe.parentElement;
+    const containerH = container.offsetHeight;
+    const nativeH = parseFloat(getComputedStyle(iframe).height);
+    if (nativeH > 0 && containerH > 0) {
+      const scale = Math.min(containerH / nativeH, 1.4);
+      iframe.style.transform = `scale(${scale})`;
+    }
+  });
+}
+window.addEventListener('load', scaleIframes);
+window.addEventListener('resize', scaleIframes);
 </script>
 
 </body>

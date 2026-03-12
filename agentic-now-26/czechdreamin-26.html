@@ -247,6 +247,15 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
   object-fit: contain;
   object-position: right top;
 }
+.tip-showcase.showcase-mock iframe {
+  border: none;
+  position: absolute;
+  top: 0; right: 0;
+  width: var(--mock-w, 680px);
+  height: var(--mock-h, 900px);
+  transform-origin: right top;
+  pointer-events: none;
+}
 /* Narrow gradient — just softens the left edge; title is dark on light bg, readable without fade */
 .tip-showcase.showcase-mock::before {
   width: 100px;
@@ -499,7 +508,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="2">
   <div class="bg-num">1</div>
   <div class="tip-showcase showcase-mock">
-    <img src="screenshots/mock-tip1.png" alt="Tip 1 – bold generic actions">
+    <iframe src="mocks/mock-tip1.html" title="Tip 1 – bold generic actions" style="--mock-w:680px;--mock-h:660px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -528,7 +537,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="3">
   <div class="bg-num">2</div>
   <div class="tip-showcase showcase-mock">
-    <img src="screenshots/mock-tip2.png" alt="Tip 2 – API calls">
+    <iframe src="mocks/mock-tip2.html" title="Tip 2 – API calls" style="--mock-w:680px;--mock-h:520px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -557,7 +566,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="4">
   <div class="bg-num">3</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
-    <img src="screenshots/mock-tip3.png" alt="Tip 3 – semantic search vs SOQL">
+    <iframe src="mocks/mock-tip3.html" title="Tip 3 – semantic search vs SOQL" style="--mock-w:540px;--mock-h:900px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -615,7 +624,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="6">
   <div class="bg-num">5</div>
   <div class="tip-showcase showcase-mock showcase-no-fade">
-    <img src="screenshots/mock-tip6.png" alt="Tip 6 – agent memory load and store">
+    <iframe src="mocks/mock-tip6.html" title="Tip 5 – agent memory load and store" style="--mock-w:680px;--mock-h:700px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -644,7 +653,7 @@ nav .nav-right { display: flex; align-items: center; gap: 1.2rem; }
 <div class="slide slide-tip" data-slide="7">
   <div class="bg-num">6</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
-    <img src="screenshots/mock-tip7.png" alt="Tip 6 – headless agent">
+    <iframe src="mocks/mock-tip7.html" title="Tip 6 – headless agent" style="--mock-w:460px;--mock-h:900px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">

@@ -1,4 +1,4 @@
-# Agentic now — Tips and Tricks to make the best of Agentforce
+# Agentic now! — How to make the best out of Agentforce
 
 Robert Soesemann · Aquiva · CzechDreamin May 29, 2026
 Demo repo: github.com/aquivalabs/my-org-butler
@@ -6,103 +6,86 @@ Demo repo: github.com/aquivalabs/my-org-butler
 
 ## Format
 
-Scrollable HTML presentation (not PPTX). File: `CzechDreamin-AgenticNow.html`
+Scrollable HTML presentation (not PPTX). File: `czechdreamin-26.html`
 - Full-viewport slides with CSS scroll-snap
 - Arrow key navigation, slide counter
 - Must look like PowerPoint at 100% browser zoom
 - Aquiva branding (logo says "AQUIVA" — no "Labs")
+- CzechDreamin branding: conference bar at top
 - Skill file: `aquiva-slides.skill` documents the HTML approach, brand, layout rules
-- CzechDreamin will add their own branding (no conference bar needed)
 
 
-## Current Slide Titles (in HTML)
+## Slide Structure (10 slides, 0-indexed)
 
-0. **Cover** — "Agentic now"
-1. **Intro** — Why these tips, My Org Butler, fork it tonight
-2. **Tip 1** — "Bold generic actions over fearful hardcoded ones"
-3. **Tip 2** — "Use APIs to get close to code execution"
-4. **Tip 3** — "Semantic queries on structured data with Data Cloud"
-5. **Tip 4** — "Ground your prompts in your files" *(blue accent slide)*
-6. **Tip 5** — "Your entire doc library as context"
-7. **Tip 6** — "Let your agent improve itself with memory"
-8. **Tip 7** — "Go headless — agentic means autonomous" *(purple accent slide)*
-9. **Closing** — QR code + repo link
+0. **Cover** — photo (robert.jpeg, round), "Agentic now!", subtitle, blue bar, Aquiva logo
+1. **Intro** — "Agentforce now. Here's why." — why tips, who I am, Aquiva intro, My Org Butler
+2. **Tip 1** — "Fewer but more powerful actions"
+3. **Tip 2** — "Supercharge actions with APIs"
+4. **Tip 3** — "Use Data Cloud for grounding" *(needs better title)*
+5. **Tip 4** — "Let your agent learn with memory"
+6. **Tip 5** — "Headless agents work while you don't"
+7. **Tip 6** — "Testing Center is not enough"
+8. **Summary** — "What I didn't cover" *(blue accent slide)*
+9. **Closing** — photo, "Danke! Feedback?", QR code
 
 
 ## Tip Slide Structure
 
-Each tip slide now has:
-- **Top:** Icon + "TIP N" label + short title (keyword phrase, not a sentence)
-- **Middle:** Two-column layout — bullets on left, image placeholder on right
-- **Bottom:** "IN MY ORG BUTLER" footer — concrete implementation with action names
+Each tip slide has:
+- **Top:** Icon + "TIP N" label + short punchy title (a real tip, not a topic description)
+- **Middle:** Two-column layout — bullets on left, iframe mock on right
+- **Bottom:** "IN MY ORG BUTLER" footer — concrete action names
 
-Image placeholders are dashed boxes describing what screenshot goes there. Replace with actual screenshots later.
-
-Titles are still being refined. Robert wants them to sound like tips/advice, with important keywords.
-
-
-## Content Per Tip
-
-### Tip 1: Bold generic actions over fearful hardcoded ones
-- Trust the LLM. 2 generic actions beat 20 narrow ones.
-- Org Butler: `ExploreOrgSchema` + `QueryRecordsWithSoql`
-- Demo: "Which opportunity should I work on next?"
-
-### Tip 2: Use APIs to get close to code execution
-- Every REST endpoint is a function call. Chain enough = programming.
-- Code-interpreter power but sandboxed — no arbitrary code.
-- Org Butler: `CallRestApi`, `CallMetadataApi`, `CallToolingApi`, `CallGitHubApi` + External Services
-- Demo: GitHub repo operations via Apex vs External Services
-- **TODO Anmol:** External Services version of GitHub integration
-
-### Tip 3: Semantic queries on structured data with Data Cloud
-- "Find deals similar to Acme" — no WHERE clause can express "similar"
-- Data Cloud hybrid retrievers, vector embeddings on CRM fields
-- Demo: ranked similar Opportunities
-- **TODO Anmol:** Data Cloud retriever with hybrid search on Opportunities
-
-### Tip 4: Ground your prompts in your files
-- Ungrounded agent invents answers with confidence
-- Prompt Templates attach files/records, Flex templates control tone/format
-- Three flavors: single file, record context, doc library search
-- Org Butler: `AnswerFromFiles`
-- Demo: Upload SOW → summarize deliverables → cite payment terms
-- **TODO Anmol:** Consolidate into single `AnswerFromFiles` action
-
-### Tip 5: Your entire doc library as context
-- Grounding at scale: 200 docs, user remembers "something about refunds"
-- Data Cloud hybrid search: keyword + semantic vectors
-- Org Butler: Data Cloud file retriever + Vectorize fallback
-- Demo: Find refund policy section by meaning, not filename
-- **TODO Anmol:** Data Cloud file retriever with hybrid search index
-
-### Tip 6: Let your agent improve itself with memory
-- Every conversation starts from scratch — brilliant consultant with amnesia
-- Persist preferences, decisions, ongoing tasks across sessions
-- Org Butler: `AgentMemory` + `LoadCustomInstructions`
-- Demo: Remember preferences → new session applies them silently
-
-### Tip 7: Go headless — agentic means autonomous
-- Chat is step one. Real pattern: no user, just triggers and schedules
-- Interactive agents = demo, autonomous agents = product
-- Org Butler: `HeadlessAgent` + `PlanForLater`
-- Demo: "Every Monday, check stale opps and Slack me" → show the notification
+Mocks are iframes in `mocks/` folder, auto-scaled to fill container.
+Image placeholders = dashed boxes → replace with screenshots before talk.
 
 
-## Visual Status
+## Action Names in My Org Butler
 
-- Logos: cropped "AQUIVA" PNGs (base64 embedded), dark + light versions
-- Icons: inline SVGs per tip slide
-- Background watermark numbers: large decorative 1-7 on each tip slide
-- Image placeholders: dashed boxes describing future screenshots
-- Text sized for PowerPoint-scale (titles 3-4rem, bullets 2.4rem)
-- Two accent slides: Tip 4 blue gradient, Tip 7 purple gradient
+- Tip 1: `ExploreOrgSchema`, `QueryRecordsWithSoql`
+- Tip 2: `CallRestApi`, `CallMetadataApi`
+- Tip 3: `QueryDataCloud`, `AnswerFromDataLibrary`, `AnswerWithCurrentFile`
+- Tip 4: `LoadCustomInstructions`, `StoreCustomInstruction`
+- Tip 5: `HeadlessAgent`, `PlanForLater`, `NotifyUser`
+- Tip 6: Claude Code skill for promptfoo testing
 
 
-## What's Next
+## Open Items — Presentation
 
-- [ ] Robert to refine titles further (they're close but may need tweaks)
-- [ ] Replace image placeholders with actual screenshots from demos
-- [ ] Anmol TODOs: External Services GitHub, Data Cloud retrievers
-- [ ] Robert may want to reconsider whether tips 4+5 should merge
-- [ ] Final text pass on bullets (currently from master plan, needs tightening)
+- [ ] Tip 3 title "Use Data Cloud for grounding" is bland — needs a punchy tip-style title
+- [ ] "What I didn't cover" bullets are placeholders — Robert will add more topics (current: packaging, AgentScript)
+- [ ] Closing "Danke! Feedback?" — Robert hasn't explicitly approved
+- [ ] mock-tip2: validation rule scenario implemented but not yet confirmed final by Robert
+- [ ] mock-tip3: shows Opportunity SOQL vs hybrid search — actual tests use conversation data, decide if mock stays conceptual
+- [ ] mock-tip5 (memory): verify action names match `LoadCustomInstructions` + `StoreCustomInstruction`
+- [ ] mock-tip7 (testing): consider adding promptfoo output panel
+- [ ] Replace all screenshot placeholders with actual demo screenshots
+- [ ] Verify even/odd alternating slide backgrounds look right
+- [ ] Test full presentation in browser: all slides, navigation, iframe scaling, Safari fullscreen
+
+
+## Open Items — my-org-butler repo
+
+From GitHub issue #49 (Data Library chunking):
+
+- [ ] Data Library chunking fails in scratch orgs — no reliable test data for Tip 3 demo
+- [ ] QueryDataCloud / AnswerFromDataLibrary need scratch org setup docs or test fixture
+
+From Tip 2 demo scenario:
+
+- [ ] Validation rule `HighValue_Pipeline` (Amount > 100000 AND Probability < 50) needed for demo — create unpackaged or document as manual setup step
+- [ ] Confirm whether External Services GitHub integration is still planned (Anmol TODO, may be dropped)
+
+General:
+
+- [ ] Claude Code skill for promptfoo testing — already exists in repo, mention in Tip 6 footer
+
+
+## Visual Notes
+
+- Butler bar: compact (icon 32px, 1.3rem text, bottom 1.2rem)
+- Bullets: 2.2rem
+- Mock width: 56%, fade gradient 400px, top 3.4rem
+- Title text-shadow for readability over mocks; disabled on blue slide (`.slide-tip-blue .tip-h`)
+- Speaker photo: robert.jpeg, 100px on cover, 120px on closing, both round with white border
+- Two accent slides: Summary blue gradient (no other slides use blue or dark)

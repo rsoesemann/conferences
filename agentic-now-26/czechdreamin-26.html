@@ -22,7 +22,7 @@
   --bg-alt: #EDECE6;
 }
 
-html { scroll-behavior: smooth; font-size: clamp(16px, 1.15vw, 22px); scroll-snap-type: y mandatory; }
+html { scroll-behavior: smooth; font-size: clamp(20px, 1.44vw, 28px); scroll-snap-type: y mandatory; }
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -239,6 +239,20 @@ nav .nav-right img { height: 36px; }
   font-size: 2.2rem;
   line-height: 1.4;
   color: var(--text);
+  z-index: 3;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 10px var(--bg);
+  text-shadow: 0 0 8px var(--bg), 0 0 14px var(--bg);
+}
+.slide-tip:nth-child(even) .tip-bullets li {
+  -webkit-text-stroke: 10px var(--bg-alt);
+  text-shadow: 0 0 8px var(--bg-alt), 0 0 14px var(--bg-alt);
+}
+.slide-tip-blue .tip-bullets li,
+.slide-tip-dark .tip-bullets li {
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  text-shadow: none;
 }
 .tip-bullets li::before {
   content: '';
@@ -354,7 +368,7 @@ nav .nav-right img { height: 36px; }
   gap: 3rem;
   align-items: flex-start;
 }
-.tip-content { flex: 1; min-width: 0; max-width: 55%; }
+.tip-content { flex: 1; min-width: 0; max-width: 78%; position: relative; z-index: 3; }
 
 /* --- ORG BUTLER FOOTER (pinned to bottom of slide) --- */
 .tip-butler {
@@ -551,9 +565,9 @@ nav .nav-right img { height: 36px; }
     <div class="tip-body">
       <div class="tip-content" style="max-width:100%">
         <ul class="tip-bullets">
-          <li><strong style="color:var(--blue)">Agentic is a must.</strong> Software stops being automated &mdash; it becomes conversational and autonomous.</li>
-          <li><strong style="color:var(--blue)">Salesforce is only doing Agentforce.</strong> Everything else is on hold. This is where the platform is heading.</li>
-          <li><strong style="color:var(--blue)">It works.</strong> At Aquiva, our customers moved past PoCs. They&rsquo;re in production and coming back.</li>
+          <li><strong style="color:var(--blue)">Agentic is a the new norm.</strong> Software stops being automated &mdash; it becomes autonomous and conversational.</li>
+          <li><strong style="color:var(--blue)">Salesforce will become Agentforce.</strong> Everything else is on hold. SaaS is dying. This is where the platform is heading.</li>
+          <li><strong style="color:var(--blue)">It works.</strong> With Aquiva, our customers moved past PoCs. They&rsquo;re in production and seeing success.</li>
           <li><strong style="color:var(--blue)">Still simple today.</strong> AgentScript will add real complexity. Learn the basics while you can.</li>
         </ul>
       </div>
@@ -563,7 +577,7 @@ nav .nav-right img { height: 36px; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p>All our learnings, open source. <a href="https://github.com/aquivalabs/my-org-butler" target="_blank" style="color:var(--blue)">github.com/aquivalabs/my-org-butler</a></p>
+        <p>Years of learnings, open source. <a href="https://github.com/aquivalabs/my-org-butler" target="_blank" style="color:var(--blue)">github.com/aquivalabs/my-org-butler</a></p>
       </div>
     </div>
 </div>
@@ -576,15 +590,15 @@ nav .nav-right img { height: 36px; }
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
-      <h2 class="tip-h">Fewer but more powerful actions</h2>
+      <h2 class="tip-h">Size does matter. Doing it right is an art.</h2>
     </div>
     <div class="tip-body">
       <div class="tip-content">
         <ul class="tip-bullets">
-          <li>2 generic actions replace dozens of hardcoded ones.</li>
-          <li>If you script every step, you don&rsquo;t need AI.</li>
-          <li>More power, less guardrails. Generic actions are harder to control.</li>
-          <li>Same for topics. Jobs-to-be-done thinking leads to hundreds. One broad topic is better.</li>
+          <li>If an Agent just calls clunky Apex its not real AI.</li>
+          <li>If an Agent could write its own code, we would be doomed.</li>
+          <li>Learn to balance creative+flexible and rigid+reliable.</li>
+          <li>Topics are similar. Find nice between Overlap and Overload.</li>
         </ul>
       </div>
     </div>
@@ -593,7 +607,7 @@ nav .nav-right img { height: 36px; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p><code>ExploreOrgSchema</code> + <code>QueryRecordsWithSoql</code> &mdash; two actions handle what would need dozens.</p>
+        <p><code>ExploreOrgSchema</code> + <code>QueryRecordsWithSoql</code> &mdash; 2 simple actions replace a complex dozens.</p>
       </div>
     </div>
 </div>
@@ -775,6 +789,16 @@ nav .nav-right img { height: 36px; }
     <h2 style="margin-bottom:0.5rem;">Danke! Feedback?</h2>
     <p style="font-size:1.4rem; font-weight:500; color:var(--text); margin-bottom:0.3rem;">Robert Sösemann</p>
     <p style="font-size:1.1rem; color:var(--text-light); margin-bottom:2rem;">Director of Engineering &amp; AI Lead at Aquiva</p>
+    <div class="socials" style="display:flex; gap:1.5rem; align-items:center; margin-bottom:1.5rem; font-size:1.15rem; color:var(--text);">
+      <span style="display:inline-flex; align-items:center; gap:0.5rem;">
+        <svg viewBox="0 0 24 24" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true"><path d="M20.452 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.356V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.266 2.37 4.266 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        /rsoesemann
+      </span>
+      <span style="display:inline-flex; align-items:center; gap:0.5rem;">
+        <svg viewBox="0 0 24 24" width="1.4em" height="1.4em" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        /rsoesemann + /aquivalabs
+      </span>
+    </div>
     <div class="qr"><svg viewBox="0 0 3.3 3.3" xmlns="http://www.w3.org/2000/svg"><path d="M0,0H0.1V0.1H0zM0.1,0H0.2V0.1H0.1zM0.2,0H0.3V0.1H0.2zM0.3,0H0.4V0.1H0.3zM0.4,0H0.5V0.1H0.4zM0.5,0H0.6V0.1H0.5zM0.6,0H0.7V0.1H0.6zM1,0H1.1V0.1H1zM1.3,0H1.4V0.1H1.3zM1.4,0H1.5V0.1H1.4zM1.7,0H1.8V0.1H1.7zM1.8,0H1.9V0.1H1.8zM2.2,0H2.3V0.1H2.2zM2.6,0H2.7V0.1H2.6zM2.7,0H2.8V0.1H2.7zM2.8,0H2.9V0.1H2.8zM2.9,0H3V0.1H2.9zM3,0H3.1V0.1H3zM3.1,0H3.2V0.1H3.1zM3.2,0H3.3V0.1H3.2zM0,0.1H0.1V0.2H0zM0.6,0.1H0.7V0.2H0.6zM1,0.1H1.1V0.2H1zM1.3,0.1H1.4V0.2H1.3zM1.6,0.1H1.7V0.2H1.6zM2,0.1H2.1V0.2H2zM2.1,0.1H2.2V0.2H2.1zM2.2,0.1H2.3V0.2H2.2zM2.6,0.1H2.7V0.2H2.6zM3.2,0.1H3.3V0.2H3.2zM0,0.2H0.1V0.3H0zM0.2,0.2H0.3V0.3H0.2zM0.3,0.2H0.4V0.3H0.3zM0.4,0.2H0.5V0.3H0.4zM0.6,0.2H0.7V0.3H0.6zM0.9,0.2H1V0.3H0.9zM1.4,0.2H1.5V0.3H1.4zM1.5,0.2H1.6V0.3H1.5zM1.6,0.2H1.7V0.3H1.6zM1.9,0.2H2V0.3H1.9zM2,0.2H2.1V0.3H2zM2.1,0.2H2.2V0.3H2.1zM2.2,0.2H2.3V0.3H2.2zM2.4,0.2H2.5V0.3H2.4zM2.6,0.2H2.7V0.3H2.6zM2.8,0.2H2.9V0.3H2.8zM2.9,0.2H3V0.3H2.9zM3,0.2H3.1V0.3H3zM3.2,0.2H3.3V0.3H3.2zM0,0.3H0.1V0.4H0zM0.2,0.3H0.3V0.4H0.2zM0.3,0.3H0.4V0.4H0.3zM0.4,0.3H0.5V0.4H0.4zM0.6,0.3H0.7V0.4H0.6zM0.8,0.3H0.9V0.4H0.8zM1,0.3H1.1V0.4H1zM1.1,0.3H1.2V0.4H1.1zM1.2,0.3H1.3V0.4H1.2zM1.3,0.3H1.4V0.4H1.3zM1.6,0.3H1.7V0.4H1.6zM1.7,0.3H1.8V0.4H1.7zM2,0.3H2.1V0.4H2zM2.1,0.3H2.2V0.4H2.1zM2.2,0.3H2.3V0.4H2.2zM2.3,0.3H2.4V0.4H2.3zM2.4,0.3H2.5V0.4H2.4zM2.6,0.3H2.7V0.4H2.6zM2.8,0.3H2.9V0.4H2.8zM2.9,0.3H3V0.4H2.9zM3,0.3H3.1V0.4H3zM3.2,0.3H3.3V0.4H3.2zM0,0.4H0.1V0.5H0zM0.2,0.4H0.3V0.5H0.2zM0.3,0.4H0.4V0.5H0.3zM0.4,0.4H0.5V0.5H0.4zM0.6,0.4H0.7V0.5H0.6zM0.8,0.4H0.9V0.5H0.8zM1.1,0.4H1.2V0.5H1.1zM1.3,0.4H1.4V0.5H1.3zM1.6,0.4H1.7V0.5H1.6zM1.7,0.4H1.8V0.5H1.7zM1.8,0.4H1.9V0.5H1.8zM1.9,0.4H2V0.5H1.9zM2,0.4H2.1V0.5H2zM2.3,0.4H2.4V0.5H2.3zM2.6,0.4H2.7V0.5H2.6zM2.8,0.4H2.9V0.5H2.8zM2.9,0.4H3V0.5H2.9zM3,0.4H3.1V0.5H3zM3.2,0.4H3.3V0.5H3.2zM0,0.5H0.1V0.6H0zM0.6,0.5H0.7V0.6H0.6zM0.9,0.5H1V0.6H0.9zM1,0.5H1.1V0.6H1zM1.2,0.5H1.3V0.6H1.2zM1.7,0.5H1.8V0.6H1.7zM2,0.5H2.1V0.6H2zM2.1,0.5H2.2V0.6H2.1zM2.2,0.5H2.3V0.6H2.2zM2.4,0.5H2.5V0.6H2.4zM2.6,0.5H2.7V0.6H2.6zM3.2,0.5H3.3V0.6H3.2zM0,0.6H0.1V0.7H0zM0.1,0.6H0.2V0.7H0.1zM0.2,0.6H0.3V0.7H0.2zM0.3,0.6H0.4V0.7H0.3zM0.4,0.6H0.5V0.7H0.4zM0.5,0.6H0.6V0.7H0.5zM0.6,0.6H0.7V0.7H0.6zM0.8,0.6H0.9V0.7H0.8zM1,0.6H1.1V0.7H1zM1.2,0.6H1.3V0.7H1.2zM1.4,0.6H1.5V0.7H1.4zM1.6,0.6H1.7V0.7H1.6zM1.8,0.6H1.9V0.7H1.8zM2,0.6H2.1V0.7H2zM2.2,0.6H2.3V0.7H2.2zM2.4,0.6H2.5V0.7H2.4zM2.6,0.6H2.7V0.7H2.6zM2.7,0.6H2.8V0.7H2.7zM2.8,0.6H2.9V0.7H2.8zM2.9,0.6H3V0.7H2.9zM3,0.6H3.1V0.7H3zM3.1,0.6H3.2V0.7H3.1zM3.2,0.6H3.3V0.7H3.2zM0.9,0.7H1V0.8H0.9zM1.5,0.7H1.6V0.8H1.5zM1.8,0.7H1.9V0.8H1.8zM2.2,0.7H2.3V0.8H2.2zM2.3,0.7H2.4V0.8H2.3zM0,0.8H0.1V0.9H0zM0.1,0.8H0.2V0.9H0.1zM0.5,0.8H0.6V0.9H0.5zM0.6,0.8H0.7V0.9H0.6zM0.7,0.8H0.8V0.9H0.7zM0.9,0.8H1V0.9H0.9zM1,0.8H1.1V0.9H1zM1.3,0.8H1.4V0.9H1.3zM1.4,0.8H1.5V0.9H1.4zM1.6,0.8H1.7V0.9H1.6zM1.7,0.8H1.8V0.9H1.7zM2.2,0.8H2.3V0.9H2.2zM2.3,0.8H2.4V0.9H2.3zM2.4,0.8H2.5V0.9H2.4zM2.8,0.8H2.9V0.9H2.8zM2.9,0.8H3V0.9H2.9zM0,0.9H0.1V1H0zM0.1,0.9H0.2V1H0.1zM0.2,0.9H0.3V1H0.2zM0.3,0.9H0.4V1H0.3zM0.5,0.9H0.6V1H0.5zM0.7,0.9H0.8V1H0.7zM1,0.9H1.1V1H1zM1.1,0.9H1.2V1H1.1zM1.4,0.9H1.5V1H1.4zM1.5,0.9H1.6V1H1.5zM1.9,0.9H2V1H1.9zM2.2,0.9H2.3V1H2.2zM2.3,0.9H2.4V1H2.3zM2.4,0.9H2.5V1H2.4zM2.7,0.9H2.8V1H2.7zM2.8,0.9H2.9V1H2.8zM3,0.9H3.1V1H3zM3.1,0.9H3.2V1H3.1zM0,1H0.1V1.1H0zM0.1,1H0.2V1.1H0.1zM0.2,1H0.3V1.1H0.2zM0.3,1H0.4V1.1H0.3zM0.4,1H0.5V1.1H0.4zM0.5,1H0.6V1.1H0.5zM0.6,1H0.7V1.1H0.6zM0.7,1H0.8V1.1H0.7zM0.8,1H0.9V1.1H0.8zM0.9,1H1V1.1H0.9zM1.2,1H1.3V1.1H1.2zM1.4,1H1.5V1.1H1.4zM1.5,1H1.6V1.1H1.5zM1.6,1H1.7V1.1H1.6zM2,1H2.1V1.1H2zM2.4,1H2.5V1.1H2.4zM2.9,1H3V1.1H2.9zM3.1,1H3.2V1.1H3.1zM0.1,1.1H0.2V1.2H0.1zM0.2,1.1H0.3V1.2H0.2zM0.3,1.1H0.4V1.2H0.3zM0.5,1.1H0.6V1.2H0.5zM0.7,1.1H0.8V1.2H0.7zM1,1.1H1.1V1.2H1zM1.2,1.1H1.3V1.2H1.2zM1.5,1.1H1.6V1.2H1.5zM1.8,1.1H1.9V1.2H1.8zM1.9,1.1H2V1.2H1.9zM2,1.1H2.1V1.2H2zM2.2,1.1H2.3V1.2H2.2zM2.3,1.1H2.4V1.2H2.3zM2.4,1.1H2.5V1.2H2.4zM2.5,1.1H2.6V1.2H2.5zM2.7,1.1H2.8V1.2H2.7zM2.8,1.1H2.9V1.2H2.8zM3,1.1H3.1V1.2H3zM0,1.2H0.1V1.3H0zM0.2,1.2H0.3V1.3H0.2zM0.5,1.2H0.6V1.3H0.5zM0.6,1.2H0.7V1.3H0.6zM0.9,1.2H1V1.3H0.9zM1,1.2H1.1V1.3H1zM1.2,1.2H1.3V1.3H1.2zM1.5,1.2H1.6V1.3H1.5zM1.6,1.2H1.7V1.3H1.6zM2,1.2H2.1V1.3H2zM2.3,1.2H2.4V1.3H2.3zM2.4,1.2H2.5V1.3H2.4zM2.6,1.2H2.7V1.3H2.6zM2.7,1.2H2.8V1.3H2.7zM3.1,1.2H3.2V1.3H3.1zM3.2,1.2H3.3V1.3H3.2zM0,1.3H0.1V1.4H0zM0.3,1.3H0.4V1.4H0.3zM0.4,1.3H0.5V1.4H0.4zM0.5,1.3H0.6V1.4H0.5zM0.7,1.3H0.8V1.4H0.7zM0.8,1.3H0.9V1.4H0.8zM0.9,1.3H1V1.4H0.9zM1,1.3H1.1V1.4H1zM1.1,1.3H1.2V1.4H1.1zM1.4,1.3H1.5V1.4H1.4zM1.5,1.3H1.6V1.4H1.5zM1.6,1.3H1.7V1.4H1.6zM1.7,1.3H1.8V1.4H1.7zM1.8,1.3H1.9V1.4H1.8zM1.9,1.3H2V1.4H1.9zM2.1,1.3H2.2V1.4H2.1zM2.3,1.3H2.4V1.4H2.3zM2.6,1.3H2.7V1.4H2.6zM2.7,1.3H2.8V1.4H2.7zM3.1,1.3H3.2V1.4H3.1zM3.2,1.3H3.3V1.4H3.2zM0,1.4H0.1V1.5H0zM0.2,1.4H0.3V1.5H0.2zM0.5,1.4H0.6V1.5H0.5zM0.6,1.4H0.7V1.5H0.6zM0.8,1.4H0.9V1.5H0.8zM1,1.4H1.1V1.5H1zM1.2,1.4H1.3V1.5H1.2zM1.3,1.4H1.4V1.5H1.3zM1.5,1.4H1.6V1.5H1.5zM1.6,1.4H1.7V1.5H1.6zM1.8,1.4H1.9V1.5H1.8zM2,1.4H2.1V1.5H2zM2.2,1.4H2.3V1.5H2.2zM2.5,1.4H2.6V1.5H2.5zM2.6,1.4H2.7V1.5H2.6zM3.1,1.4H3.2V1.5H3.1zM0,1.5H0.1V1.6H0zM0.2,1.5H0.3V1.6H0.2zM0.4,1.5H0.5V1.6H0.4zM0.7,1.5H0.8V1.6H0.7zM1,1.5H1.1V1.6H1zM1.1,1.5H1.2V1.6H1.1zM1.4,1.5H1.5V1.6H1.4zM1.5,1.5H1.6V1.6H1.5zM1.9,1.5H2V1.6H1.9zM2,1.5H2.1V1.6H2zM2.7,1.5H2.8V1.6H2.7zM2.8,1.5H2.9V1.6H2.8zM3,1.5H3.1V1.6H3zM3.2,1.5H3.3V1.6H3.2zM0.2,1.6H0.3V1.7H0.2zM0.3,1.6H0.4V1.7H0.3zM0.4,1.6H0.5V1.7H0.4zM0.6,1.6H0.7V1.7H0.6zM0.7,1.6H0.8V1.7H0.7zM0.8,1.6H0.9V1.7H0.8zM0.9,1.6H1V1.7H0.9zM1,1.6H1.1V1.7H1zM1.1,1.6H1.2V1.7H1.1zM1.2,1.6H1.3V1.7H1.2zM1.3,1.6H1.4V1.7H1.3zM1.4,1.6H1.5V1.7H1.4zM1.7,1.6H1.8V1.7H1.7zM2,1.6H2.1V1.7H2zM2.2,1.6H2.3V1.7H2.2zM2.5,1.6H2.6V1.7H2.5zM2.7,1.6H2.8V1.7H2.7zM2.8,1.6H2.9V1.7H2.8zM3.1,1.6H3.2V1.7H3.1zM0,1.7H0.1V1.8H0zM0.1,1.7H0.2V1.8H0.1zM0.7,1.7H0.8V1.8H0.7zM0.8,1.7H0.9V1.8H0.8zM1,1.7H1.1V1.8H1zM1.1,1.7H1.2V1.8H1.1zM1.2,1.7H1.3V1.8H1.2zM1.5,1.7H1.6V1.8H1.5zM1.8,1.7H1.9V1.8H1.8zM1.9,1.7H2V1.8H1.9zM2,1.7H2.1V1.8H2zM2.1,1.7H2.2V1.8H2.1zM2.3,1.7H2.4V1.8H2.3zM2.6,1.7H2.7V1.8H2.6zM2.7,1.7H2.8V1.8H2.7zM2.9,1.7H3V1.8H2.9zM3.1,1.7H3.2V1.8H3.1zM3.2,1.7H3.3V1.8H3.2zM0.1,1.8H0.2V1.9H0.1zM0.5,1.8H0.6V1.9H0.5zM0.6,1.8H0.7V1.9H0.6zM0.8,1.8H0.9V1.9H0.8zM1,1.8H1.1V1.9H1zM1.1,1.8H1.2V1.9H1.1zM1.2,1.8H1.3V1.9H1.2zM1.3,1.8H1.4V1.9H1.3zM1.5,1.8H1.6V1.9H1.5zM1.6,1.8H1.7V1.9H1.6zM1.8,1.8H1.9V1.9H1.8zM1.9,1.8H2V1.9H1.9zM2.3,1.8H2.4V1.9H2.3zM2.4,1.8H2.5V1.9H2.4zM3.2,1.8H3.3V1.9H3.2zM0.1,1.9H0.2V2H0.1zM0.2,1.9H0.3V2H0.2zM0.3,1.9H0.4V2H0.3zM0.5,1.9H0.6V2H0.5zM0.7,1.9H0.8V2H0.7zM1,1.9H1.1V2H1zM1.1,1.9H1.2V2H1.1zM1.4,1.9H1.5V2H1.4zM1.5,1.9H1.6V2H1.5zM1.6,1.9H1.7V2H1.6zM2,1.9H2.1V2H2zM2.4,1.9H2.5V2H2.4zM2.6,1.9H2.7V2H2.6zM3,1.9H3.1V2H3zM0,2H0.1V2.1H0zM0.1,2H0.2V2.1H0.1zM0.2,2H0.3V2.1H0.2zM0.4,2H0.5V2.1H0.4zM0.5,2H0.6V2.1H0.5zM0.6,2H0.7V2.1H0.6zM0.9,2H1V2.1H0.9zM1.3,2H1.4V2.1H1.3zM1.4,2H1.5V2.1H1.4zM1.5,2H1.6V2.1H1.5zM1.6,2H1.7V2.1H1.6zM1.7,2H1.8V2.1H1.7zM1.8,2H1.9V2.1H1.8zM2.2,2H2.3V2.1H2.2zM2.3,2H2.4V2.1H2.3zM2.4,2H2.5V2.1H2.4zM2.8,2H2.9V2.1H2.8zM3.1,2H3.2V2.1H3.1zM0,2.1H0.1V2.2H0zM0.1,2.1H0.2V2.2H0.1zM0.2,2.1H0.3V2.2H0.2zM0.7,2.1H0.8V2.2H0.7zM0.8,2.1H0.9V2.2H0.8zM1,2.1H1.1V2.2H1zM1.1,2.1H1.2V2.2H1.1zM1.2,2.1H1.3V2.2H1.2zM1.4,2.1H1.5V2.2H1.4zM1.5,2.1H1.6V2.2H1.5zM1.6,2.1H1.7V2.2H1.6zM1.7,2.1H1.8V2.2H1.7zM1.8,2.1H1.9V2.2H1.8zM1.9,2.1H2V2.2H1.9zM2.2,2.1H2.3V2.2H2.2zM2.3,2.1H2.4V2.2H2.3zM2.7,2.1H2.8V2.2H2.7zM2.8,2.1H2.9V2.2H2.8zM2.9,2.1H3V2.2H2.9zM3.1,2.1H3.2V2.2H3.1zM0,2.2H0.1V2.3H0zM0.2,2.2H0.3V2.3H0.2zM0.4,2.2H0.5V2.3H0.4zM0.5,2.2H0.6V2.3H0.5zM0.6,2.2H0.7V2.3H0.6zM0.7,2.2H0.8V2.3H0.7zM0.9,2.2H1V2.3H0.9zM1,2.2H1.1V2.3H1zM1.2,2.2H1.3V2.3H1.2zM1.5,2.2H1.6V2.3H1.5zM2,2.2H2.1V2.3H2zM2.2,2.2H2.3V2.3H2.2zM2.4,2.2H2.5V2.3H2.4zM2.5,2.2H2.6V2.3H2.5zM2.6,2.2H2.7V2.3H2.6zM2.9,2.2H3V2.3H2.9zM3.1,2.2H3.2V2.3H3.1zM0,2.3H0.1V2.4H0zM0.4,2.3H0.5V2.4H0.4zM0.8,2.3H0.9V2.4H0.8zM1,2.3H1.1V2.4H1zM1.1,2.3H1.2V2.4H1.1zM1.2,2.3H1.3V2.4H1.2zM1.4,2.3H1.5V2.4H1.4zM1.5,2.3H1.6V2.4H1.5zM1.9,2.3H2V2.4H1.9zM2.6,2.3H2.7V2.4H2.6zM2.7,2.3H2.8V2.4H2.7zM2.9,2.3H3V2.4H2.9zM3,2.3H3.1V2.4H3zM0,2.4H0.1V2.5H0zM0.1,2.4H0.2V2.5H0.1zM0.2,2.4H0.3V2.5H0.2zM0.3,2.4H0.4V2.5H0.3zM0.5,2.4H0.6V2.5H0.5zM0.6,2.4H0.7V2.5H0.6zM0.7,2.4H0.8V2.5H0.7zM1.1,2.4H1.2V2.5H1.1zM1.5,2.4H1.6V2.5H1.5zM1.9,2.4H2V2.5H1.9zM2,2.4H2.1V2.5H2zM2.3,2.4H2.4V2.5H2.3zM2.4,2.4H2.5V2.5H2.4zM2.5,2.4H2.6V2.5H2.5zM2.6,2.4H2.7V2.5H2.6zM2.7,2.4H2.8V2.5H2.7zM2.8,2.4H2.9V2.5H2.8zM3.1,2.4H3.2V2.5H3.1zM0.8,2.5H0.9V2.6H0.8zM1.1,2.5H1.2V2.6H1.1zM1.2,2.5H1.3V2.6H1.2zM1.3,2.5H1.4V2.6H1.3zM1.5,2.5H1.6V2.6H1.5zM1.7,2.5H1.8V2.6H1.7zM1.8,2.5H1.9V2.6H1.8zM1.9,2.5H2V2.6H1.9zM2,2.5H2.1V2.6H2zM2.3,2.5H2.4V2.6H2.3zM2.4,2.5H2.5V2.6H2.4zM2.8,2.5H2.9V2.6H2.8zM3,2.5H3.1V2.6H3zM3.2,2.5H3.3V2.6H3.2zM0,2.6H0.1V2.7H0zM0.1,2.6H0.2V2.7H0.1zM0.2,2.6H0.3V2.7H0.2zM0.3,2.6H0.4V2.7H0.3zM0.4,2.6H0.5V2.7H0.4zM0.5,2.6H0.6V2.7H0.5zM0.6,2.6H0.7V2.7H0.6zM0.8,2.6H0.9V2.7H0.8zM0.9,2.6H1V2.7H0.9zM1,2.6H1.1V2.7H1zM1.4,2.6H1.5V2.7H1.4zM1.5,2.6H1.6V2.7H1.5zM1.6,2.6H1.7V2.7H1.6zM1.7,2.6H1.8V2.7H1.7zM2.1,2.6H2.2V2.7H2.1zM2.2,2.6H2.3V2.7H2.2zM2.3,2.6H2.4V2.7H2.3zM2.4,2.6H2.5V2.7H2.4zM2.6,2.6H2.7V2.7H2.6zM2.8,2.6H2.9V2.7H2.8zM3.1,2.6H3.2V2.7H3.1zM0,2.7H0.1V2.8H0zM0.6,2.7H0.7V2.8H0.6zM0.8,2.7H0.9V2.8H0.8zM0.9,2.7H1V2.8H0.9zM1,2.7H1.1V2.8H1zM1.8,2.7H1.9V2.8H1.8zM1.9,2.7H2V2.8H1.9zM2.3,2.7H2.4V2.8H2.3zM2.4,2.7H2.5V2.8H2.4zM2.8,2.7H2.9V2.8H2.8zM2.9,2.7H3V2.8H2.9zM3,2.7H3.1V2.8H3zM3.2,2.7H3.3V2.8H3.2zM0,2.8H0.1V2.9H0zM0.2,2.8H0.3V2.9H0.2zM0.3,2.8H0.4V2.9H0.3zM0.4,2.8H0.5V2.9H0.4zM0.6,2.8H0.7V2.9H0.6zM0.9,2.8H1V2.9H0.9zM1,2.8H1.1V2.9H1zM1.1,2.8H1.2V2.9H1.1zM1.2,2.8H1.3V2.9H1.2zM1.3,2.8H1.4V2.9H1.3zM1.4,2.8H1.5V2.9H1.4zM1.7,2.8H1.8V2.9H1.7zM1.9,2.8H2V2.9H1.9zM2.2,2.8H2.3V2.9H2.2zM2.4,2.8H2.5V2.9H2.4zM2.5,2.8H2.6V2.9H2.5zM2.6,2.8H2.7V2.9H2.6zM2.7,2.8H2.8V2.9H2.7zM2.8,2.8H2.9V2.9H2.8zM2.9,2.8H3V2.9H2.9zM3.1,2.8H3.2V2.9H3.1zM3.2,2.8H3.3V2.9H3.2zM0,2.9H0.1V3H0zM0.2,2.9H0.3V3H0.2zM0.3,2.9H0.4V3H0.3zM0.4,2.9H0.5V3H0.4zM0.6,2.9H0.7V3H0.6zM1,2.9H1.1V3H1zM1.1,2.9H1.2V3H1.1zM1.2,2.9H1.3V3H1.2zM1.3,2.9H1.4V3H1.3zM1.5,2.9H1.6V3H1.5zM1.7,2.9H1.8V3H1.7zM1.8,2.9H1.9V3H1.8zM1.9,2.9H2V3H1.9zM2,2.9H2.1V3H2zM2.2,2.9H2.3V3H2.2zM2.3,2.9H2.4V3H2.3zM2.4,2.9H2.5V3H2.4zM2.5,2.9H2.6V3H2.5zM2.8,2.9H2.9V3H2.8zM3,2.9H3.1V3H3zM0,3H0.1V3.1H0zM0.2,3H0.3V3.1H0.2zM0.3,3H0.4V3.1H0.3zM0.4,3H0.5V3.1H0.4zM0.6,3H0.7V3.1H0.6zM0.9,3H1V3.1H0.9zM1.1,3H1.2V3.1H1.1zM1.2,3H1.3V3.1H1.2zM1.3,3H1.4V3.1H1.3zM1.4,3H1.5V3.1H1.4zM1.5,3H1.6V3.1H1.5zM1.9,3H2V3.1H1.9zM2.2,3H2.3V3.1H2.2zM2.3,3H2.4V3.1H2.3zM2.5,3H2.6V3.1H2.5zM2.8,3H2.9V3.1H2.8zM3.2,3H3.3V3.1H3.2zM0,3.1H0.1V3.2H0zM0.6,3.1H0.7V3.2H0.6zM0.8,3.1H0.9V3.2H0.8zM1,3.1H1.1V3.2H1zM1.1,3.1H1.2V3.2H1.1zM1.4,3.1H1.5V3.2H1.4zM1.5,3.1H1.6V3.2H1.5zM1.6,3.1H1.7V3.2H1.6zM2,3.1H2.1V3.2H2zM2.5,3.1H2.6V3.2H2.5zM2.7,3.1H2.8V3.2H2.7zM2.8,3.1H2.9V3.2H2.8zM2.9,3.1H3V3.2H2.9zM3,3.1H3.1V3.2H3zM0,3.2H0.1V3.3H0zM0.1,3.2H0.2V3.3H0.1zM0.2,3.2H0.3V3.3H0.2zM0.3,3.2H0.4V3.3H0.3zM0.4,3.2H0.5V3.3H0.4zM0.5,3.2H0.6V3.3H0.5zM0.6,3.2H0.7V3.3H0.6zM0.8,3.2H0.9V3.3H0.8zM0.9,3.2H1V3.3H0.9zM1,3.2H1.1V3.3H1zM1.1,3.2H1.2V3.3H1.1zM1.2,3.2H1.3V3.3H1.2zM1.3,3.2H1.4V3.3H1.3zM1.4,3.2H1.5V3.3H1.4zM1.5,3.2H1.6V3.3H1.5zM1.6,3.2H1.7V3.3H1.6zM1.7,3.2H1.8V3.3H1.7zM2.2,3.2H2.3V3.3H2.2zM2.3,3.2H2.4V3.3H2.3zM2.4,3.2H2.5V3.3H2.4zM2.5,3.2H2.6V3.3H2.5zM2.6,3.2H2.7V3.3H2.6zM2.8,3.2H2.9V3.3H2.8zM3.1,3.2H3.2V3.3H3.1z" fill="#000000"/></svg></div>
   </div>
 </div>

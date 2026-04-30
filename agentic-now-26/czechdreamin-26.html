@@ -22,7 +22,7 @@
   --bg-alt: #EDECE6;
 }
 
-html { scroll-behavior: smooth; font-size: clamp(20px, 1.44vw, 28px); scroll-snap-type: y mandatory; }
+html { scroll-behavior: smooth; font-size: clamp(16px, 1.15vw, 22px); scroll-snap-type: y mandatory; }
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -192,13 +192,13 @@ nav .nav-right img { height: 36px; }
 }
 .slide-tip .bg-num {
   position: absolute;
-  left: -5vw; bottom: -28vh;
+  left: -120px; bottom: -40px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: clamp(36rem, 63vw, 54rem);
+  font-size: clamp(27rem, 47vw, 40rem);
   font-weight: 800;
   color: var(--blue);
-  opacity: 0.04;
-  line-height: 1;
+  opacity: 0.13;
+  line-height: 0.78;
   pointer-events: none;
   user-select: none;
   z-index: 0;
@@ -239,20 +239,6 @@ nav .nav-right img { height: 36px; }
   font-size: 2.2rem;
   line-height: 1.4;
   color: var(--text);
-  z-index: 3;
-  paint-order: stroke fill;
-  -webkit-text-stroke: 10px var(--bg);
-  text-shadow: 0 0 8px var(--bg), 0 0 14px var(--bg);
-}
-.slide-tip:nth-child(even) .tip-bullets li {
-  -webkit-text-stroke: 10px var(--bg-alt);
-  text-shadow: 0 0 8px var(--bg-alt), 0 0 14px var(--bg-alt);
-}
-.slide-tip-blue .tip-bullets li,
-.slide-tip-dark .tip-bullets li {
-  -webkit-text-stroke: 0;
-  paint-order: normal;
-  text-shadow: none;
 }
 .tip-bullets li::before {
   content: '';
@@ -325,7 +311,7 @@ nav .nav-right img { height: 36px; }
   pointer-events: none;
 }
 .tip-showcase.showcase-mock::before {
-  width: 400px;
+  width: 220px;
 }
 .tip-showcase.showcase-no-fade::before {
   display: none;
@@ -368,7 +354,7 @@ nav .nav-right img { height: 36px; }
   gap: 3rem;
   align-items: flex-start;
 }
-.tip-content { flex: 1; min-width: 0; max-width: 78%; position: relative; z-index: 3; }
+.tip-content { flex: 1; min-width: 0; max-width: 55%; }
 
 /* --- ORG BUTLER FOOTER (pinned to bottom of slide) --- */
 .tip-butler {
@@ -413,6 +399,27 @@ nav .nav-right img { height: 36px; }
   padding: 0.1em 0.4em;
   border-radius: 4px;
 }
+
+/* --- MISSING NUMBERS (summary slide) --- */
+.missing-nums {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.missing-nums .mn {
+  position: absolute;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  line-height: 0.78;
+  color: rgba(255,255,255,0.10);
+}
+.missing-nums .mn-8  { left: -3vw;  bottom: -4vw;  font-size: 38vw; }
+.missing-nums .mn-9  { left: 28vw;  bottom: -1vw;  font-size: 22vw; color: rgba(255,255,255,0.07); }
+.missing-nums .mn-10 { left: 50vw;  bottom:  2vw;  font-size: 14vw; color: rgba(255,255,255,0.05); }
+.missing-nums .mn-11 { left: 70vw;  bottom:  5vw;  font-size:  9vw; color: rgba(255,255,255,0.04); }
 
 /* --- BLUE ACCENT TIP --- */
 .slide-tip-blue {
@@ -533,7 +540,7 @@ nav .nav-right img { height: 36px; }
 <div class="progress-bar" id="progressBar"></div>
 <nav>
   <div class="nav-brand">CzechDreamin 26 — Agentic now!</div>
-  <div class="nav-right"><img src="../images/aquiva-logo-nav.png" alt="Aquiva"></div>
+  <div class="nav-right"><img src="images/aquiva-logo-nav.png" alt="Aquiva"></div>
 </nav>
 
 <!-- COVER -->
@@ -541,7 +548,7 @@ nav .nav-right img { height: 36px; }
   <img src="czechdreamin-leaf.png" alt="" class="leaf-deco">
   <div class="slide-inner">
     <div class="speaker-info">
-      <img src="../images/robert.jpeg" alt="Robert Sösemann" class="speaker-photo">
+      <img src="images/robert.jpeg" alt="Robert Sösemann" class="speaker-photo">
       <div>
         <div class="speaker-name">Robert Sösemann</div>
         <div class="speaker-title">Director of Engineering &amp; AI Lead at Aquiva</div>
@@ -567,8 +574,8 @@ nav .nav-right img { height: 36px; }
         <ul class="tip-bullets">
           <li><strong style="color:var(--blue)">Agentic is a the new norm.</strong> Software stops being automated &mdash; it becomes autonomous and conversational.</li>
           <li><strong style="color:var(--blue)">Salesforce will become Agentforce.</strong> Everything else is on hold. SaaS is dying. This is where the platform is heading.</li>
-          <li><strong style="color:var(--blue)">It works.</strong> With Aquiva, our customers moved past PoCs. They&rsquo;re in production and seeing success.</li>
-          <li><strong style="color:var(--blue)">Still simple today.</strong> AgentScript will add real complexity. Learn the basics while you can.</li>
+          <li><strong style="color:var(--blue)">It really works.</strong> With Aquiva, our customers moved past PoCs. They&rsquo;re in production and seeing success.</li>
+          <li><strong style="color:var(--blue)">Still simple today.</strong> AgentScript will add more complexity. Learn the basics while you can.</li>
         </ul>
       </div>
     </div>
@@ -590,15 +597,15 @@ nav .nav-right img { height: 36px; }
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
-      <h2 class="tip-h">Size does matter. Doing it right is an art.</h2>
+      <h2 class="tip-h">Less often is more. Trust the LLM.</h2>
     </div>
     <div class="tip-body">
       <div class="tip-content">
         <ul class="tip-bullets">
-          <li>If an Agent just calls clunky Apex its not real AI.</li>
-          <li>If an Agent could write its own code, we would be doomed.</li>
-          <li>Learn to balance creative+flexible and rigid+reliable.</li>
-          <li>Topics are similar. Find nice between Overlap and Overload.</li>
+          <li>Fewer more powerful Actions. Less code more generic logic. </li>
+          <li>Using expensive AI mean learning to trust it (a bit)</li>
+          <li>Experiment to find a balance between too rigid and too crazy</li>
+          <li>Same with Topics . Find sweet spot between Overlap+Overload.</li>
         </ul>
       </div>
     </div>
@@ -641,7 +648,7 @@ nav .nav-right img { height: 36px; }
     </div>
 </div>
 
-<!-- TIP 3 ================================================ -->
+<!-- TIP 3 — DATA CLOUD ================================================ -->
 <div class="slide slide-tip" data-slide="4">
   <div class="bg-num">3</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
@@ -649,13 +656,14 @@ nav .nav-right img { height: 36px; }
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
-      <h2 class="tip-h">Use Data Cloud for grounding</h2>
+      <h2 class="tip-h">More than record grounding: Data Lake</h2>
     </div>
     <div class="tip-body">
       <div class="tip-content">
         <ul class="tip-bullets">
-          <li>Semantic queries: &ldquo;Find deals similar to Acme&rdquo; &mdash; no WHERE clause can do that.</li>
-          <li>RAG on files: answer questions from your doc library, not from hallucinations.</li>
+          <li><strong>Not just Salesforce.</strong> Data Cloud ingests Snowflake, BigQuery, S3, files, web events &mdash; one place to ask.</li>
+          <li><strong>Hybrid search beats SOQL.</strong> Keyword + semantic in one query &mdash; &ldquo;Find deals similar to Acme&rdquo; without a WHERE clause.</li>
+          <li><strong>RAG on documents.</strong> Answer from your doc library, not from hallucinations.</li>
           <li>Data Cloud Foundations is free. Start today.</li>
         </ul>
       </div>
@@ -665,16 +673,46 @@ nav .nav-right img { height: 36px; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p><code>QueryDataCloud</code> for semantic search, <code>AnswerFromDataLibrary</code> + <code>AnswerWithCurrentFile</code> for files.</p>
+        <p><code>QueryDataCloud</code> for hybrid search, <code>AnswerFromDataLibrary</code> + <code>AnswerWithCurrentFile</code> for files.</p>
       </div>
     </div>
 </div>
 
-<!-- TIP 4 ================================================ -->
+<!-- TIP 4 — WEB SEARCH ================================================ -->
 <div class="slide slide-tip" data-slide="5">
   <div class="bg-num">4</div>
+  <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
+    <iframe src="mocks/mock-tip-tavily.html" title="Tip 4 – Tavily Web Search" style="--mock-w:540px;--mock-h:750px"></iframe>
+  </div>
+  <div class="slide-inner reveal">
+    <div class="tip-header">
+      <h2 class="tip-h">Ground in the world, not just your org</h2>
+    </div>
+    <div class="tip-body">
+      <div class="tip-content">
+        <ul class="tip-bullets">
+          <li>LLM training data is months old. Your customers ask about today.</li>
+          <li>Salesforce still has no built-in web search action. Tavily fills the gap.</li>
+          <li>Free tier, AI-optimized results, just a Named Credential away.</li>
+          <li>Combine with internal grounding &mdash; your agent knows your org <em>and</em> the world.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="tip-butler">
+      <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
+      <div class="tip-butler-body">
+        <div class="tip-butler-label">In My Org Butler</div>
+        <p><code>SearchWeb</code> &mdash; one Tavily API key, one Named Credential, done.</p>
+      </div>
+    </div>
+</div>
+
+<!-- TIP 5 — MEMORY ================================================ -->
+<div class="slide slide-tip" data-slide="6">
+  <div class="bg-num">5</div>
   <div class="tip-showcase showcase-mock">
-    <iframe src="mocks/mock-tip5.html" title="Tip 4 – agent memory" style="--mock-w:680px;--mock-h:700px"></iframe>
+    <iframe src="mocks/mock-tip5.html" title="Tip 5 – agent memory" style="--mock-w:680px;--mock-h:700px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -686,6 +724,7 @@ nav .nav-right img { height: 36px; }
           <li>Every conversation starts from scratch. Brilliant consultant with amnesia.</li>
           <li>Persist preferences, decisions, tasks across sessions.</li>
           <li>Memory turns a tool into a colleague.</li>
+          <li>Requires tricks to not be stopped as &ldquo;Prompt Injection Attack&rdquo;</li>
         </ul>
       </div>
     </div>
@@ -699,11 +738,11 @@ nav .nav-right img { height: 36px; }
     </div>
 </div>
 
-<!-- TIP 5 ================================================ -->
-<div class="slide slide-tip" data-slide="6">
-  <div class="bg-num">5</div>
+<!-- TIP 6 — HEADLESS ================================================ -->
+<div class="slide slide-tip" data-slide="7">
+  <div class="bg-num">6</div>
   <div class="tip-showcase showcase-mock showcase-no-fade">
-    <iframe src="mocks/mock-tip6.html" title="Tip 5 – headless agent" style="--mock-w:540px;--mock-h:800px"></iframe>
+    <iframe src="mocks/mock-tip6.html" title="Tip 6 – headless agent" style="--mock-w:540px;--mock-h:800px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -728,11 +767,11 @@ nav .nav-right img { height: 36px; }
     </div>
 </div>
 
-<!-- TIP 6 ================================================ -->
-<div class="slide slide-tip" data-slide="7">
-  <div class="bg-num">6</div>
+<!-- TIP 7 — TESTING ================================================ -->
+<div class="slide slide-tip" data-slide="8">
+  <div class="bg-num">7</div>
   <div class="tip-showcase showcase-mock">
-    <iframe src="mocks/mock-tip7.html" title="Tip 6 – Testing" style="--mock-w:680px;--mock-h:780px"></iframe>
+    <iframe src="mocks/mock-tip7.html" title="Tip 7 – Testing" style="--mock-w:680px;--mock-h:780px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -758,7 +797,13 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- SUMMARY ================================================ -->
-<div class="slide slide-tip slide-tip-blue" data-slide="8">
+<div class="slide slide-tip slide-tip-blue" data-slide="9">
+  <div class="missing-nums" aria-hidden="true">
+    <span class="mn mn-8">8</span>
+    <span class="mn mn-9">9</span>
+    <span class="mn mn-10">10</span>
+    <span class="mn mn-11">11</span>
+  </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
       <h2 class="tip-h">What I didn&rsquo;t cover</h2>
@@ -766,9 +811,10 @@ nav .nav-right img { height: 36px; }
     <div class="tip-body">
       <div class="tip-content" style="max-width:100%">
         <ul class="tip-bullets">
-          <li>Packaging agents is painful &mdash; Agent Templates have no upgrade path.</li>
-          <li>AgentScript is coming. Migration won&rsquo;t be simple.</li>
-          <li>Lorem ipsum &mdash; placeholder for more topics.</li>
+          <li><strong>Packaging.</strong> Agents in Managed Packages are painful &mdash; no working versioning, Agent Templates have no upgrade path.</li>
+          <li><strong>Agentforce Analytics &amp; Audit:</strong> How do people use it? How much does my agent cost? Where does it fail? How do people like it?</li>
+          <li><strong>AgentScript:</strong> Migration won&rsquo;t be simple. Deterministic reasoning &mdash; I&rsquo;m still doubtful.</li>
+          <li><strong>DevOps:</strong> How do you version agents, experiments and prompts? How do you deploy them? Deploy full of pain.</li>
         </ul>
       </div>
     </div>
@@ -777,16 +823,16 @@ nav .nav-right img { height: 36px; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p>Packaging, DevOps, testing and more &mdash; it&rsquo;s all in the repo.</p>
+        <p>Packaging, DevOps, analytics, security &mdash; it&rsquo;s all worked through in the repo.</p>
       </div>
     </div>
 </div>
 
 <!-- CLOSING -->
-<div class="slide slide-closing" data-slide="9">
+<div class="slide slide-closing" data-slide="10">
   <div class="slide-inner reveal" style="display:flex; flex-direction:column; align-items:center;">
-    <img src="../images/robert.jpeg" alt="Robert Sösemann" style="width:120px;height:120px;border-radius:50%;border:4px solid var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.12);object-fit:cover;margin-bottom:1.2rem;">
-    <h2 style="margin-bottom:0.5rem;">Danke! Feedback?</h2>
+    <img src="images/robert.jpeg" alt="Robert Sösemann" style="width:120px;height:120px;border-radius:50%;border:4px solid var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.12);object-fit:cover;margin-bottom:1.2rem;">
+    <h2 style="margin-bottom:0.5rem;">Danke! Questions?</h2>
     <p style="font-size:1.4rem; font-weight:500; color:var(--text); margin-bottom:0.3rem;">Robert Sösemann</p>
     <p style="font-size:1.1rem; color:var(--text-light); margin-bottom:2rem;">Director of Engineering &amp; AI Lead at Aquiva</p>
     <div class="socials" style="display:flex; gap:1.5rem; align-items:center; margin-bottom:1.5rem; font-size:1.15rem; color:var(--text);">

@@ -775,14 +775,15 @@ nav .nav-right img { height: 36px; }
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
-      <h2 class="tip-h">Testing Center is not enough</h2>
+      <h2 class="tip-h">Testing AI needs a mindshift </h2>
     </div>
     <div class="tip-body">
       <div class="tip-content">
         <ul class="tip-bullets">
-          <li>One topic? Topic match is always 100%. Action order? Smart agents find different routes.</li>
-          <li>The LLM judge is a black box. No multi-turn. No data reset between tests.</li>
-          <li>Salesforce will fix this &mdash; eventually. Until then: <code>promptfoo</code> (just acquired by OpenAI).</li>
+          <li>Red/Green testing is turning into probabilistic evaluation</li>
+          <li>Testing Center has many flaws that eventually might be fixed</li>
+          <li>Useless Topic Match, irrelevant Action Match + Flaky LLM Judge</li>
+          <li>Use <code>Testing Center</code> for what it covers — then plug in custom tools for what it can’t: multi-turn flows, data resets, stronger judges.</li>
         </ul>
       </div>
     </div>
@@ -791,7 +792,7 @@ nav .nav-right img { height: 36px; }
       <img src="https://github.com/aquivalabs/my-org-butler/raw/main/resources/logo.png" alt="My Org Butler" class="tip-butler-icon">
       <div class="tip-butler-body">
         <div class="tip-butler-label">In My Org Butler</div>
-        <p><code>promptfoo</code> evals with <code>o3-mini</code> as judge + a Claude Code skill to run them.</p>
+        <p>A <code>Claude Code Skill</code> generates multi-turn YAML tests, runs them through the <code>Agent API</code>, judged by your own LLM.</p>
       </div>
     </div>
 </div>

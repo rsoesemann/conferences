@@ -544,7 +544,7 @@ nav .nav-right img { height: 36px; }
 </nav>
 
 <!-- COVER -->
-<div class="slide slide-cover" data-slide="0">
+<div class="slide slide-cover" data-slide="0" data-seconds="60">
   <img src="czechdreamin-leaf.png" alt="" class="leaf-deco">
   <div class="slide-inner">
     <div class="speaker-info">
@@ -564,7 +564,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- INTRO -->
-<div class="slide slide-intro slide-tip" data-slide="1">
+<div class="slide slide-intro slide-tip" data-slide="1" data-seconds="180">
   <div class="slide-inner reveal">
     <div class="tip-header">
       <h2 class="tip-h"><span class="tip-num">Agentforce now.</span> Here&rsquo;s why</h2>
@@ -590,7 +590,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 1 ================================================ -->
-<div class="slide slide-tip" data-slide="2">
+<div class="slide slide-tip" data-slide="2" data-seconds="300">
   <div class="bg-num">1</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip1.html" title="Tip 1 – bold generic actions" style="--mock-w:680px;--mock-h:660px"></iframe>
@@ -620,7 +620,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 2 ================================================ -->
-<div class="slide slide-tip" data-slide="3">
+<div class="slide slide-tip" data-slide="3" data-seconds="300">
   <div class="bg-num">2</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip2.html" title="Tip 2 – API calls" style="--mock-w:680px;--mock-h:760px"></iframe>
@@ -649,7 +649,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 3 — DATA CLOUD ================================================ -->
-<div class="slide slide-tip" data-slide="4">
+<div class="slide slide-tip" data-slide="4" data-seconds="300">
   <div class="bg-num">3</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
     <iframe src="mocks/mock-tip3.html" title="Tip 3 – Data Cloud" style="--mock-w:540px;--mock-h:750px"></iframe>
@@ -679,10 +679,10 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 4 — WEB SEARCH ================================================ -->
-<div class="slide slide-tip" data-slide="5">
+<div class="slide slide-tip" data-slide="5" data-seconds="300">
   <div class="bg-num">4</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
-    <iframe src="mocks/mock-tip4.html" title="Tip 4 – Tavily Web Search" style="--mock-w:540px;--mock-h:750px"></iframe>
+    <iframe src="mocks/mock-tip-tavily.html" title="Tip 4 – Tavily Web Search" style="--mock-w:540px;--mock-h:750px"></iframe>
   </div>
   <div class="slide-inner reveal">
     <div class="tip-header">
@@ -709,7 +709,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 5 — MEMORY ================================================ -->
-<div class="slide slide-tip" data-slide="6">
+<div class="slide slide-tip" data-slide="6" data-seconds="300">
   <div class="bg-num">5</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip5.html" title="Tip 5 – agent memory" style="--mock-w:680px;--mock-h:700px"></iframe>
@@ -739,7 +739,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 6 — HEADLESS ================================================ -->
-<div class="slide slide-tip" data-slide="7">
+<div class="slide slide-tip" data-slide="7" data-seconds="300">
   <div class="bg-num">6</div>
   <div class="tip-showcase showcase-mock showcase-no-fade">
     <iframe src="mocks/mock-tip6.html" title="Tip 6 – headless agent" style="--mock-w:540px;--mock-h:800px"></iframe>
@@ -768,7 +768,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 7 — TESTING ================================================ -->
-<div class="slide slide-tip" data-slide="8">
+<div class="slide slide-tip" data-slide="8" data-seconds="300">
   <div class="bg-num">7</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip7.html" title="Tip 7 – Testing" style="--mock-w:680px;--mock-h:780px"></iframe>
@@ -798,7 +798,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- SUMMARY ================================================ -->
-<div class="slide slide-tip slide-tip-blue" data-slide="9">
+<div class="slide slide-tip slide-tip-blue" data-slide="9" data-seconds="300">
   <div class="missing-nums" aria-hidden="true">
     <span class="mn mn-8">8</span>
     <span class="mn mn-9">9</span>
@@ -830,7 +830,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- CLOSING -->
-<div class="slide slide-closing" data-slide="10">
+<div class="slide slide-closing" data-slide="10" data-seconds="360">
   <div class="slide-inner reveal" style="display:flex; flex-direction:column; align-items:center;">
     <img src="../images/robert.jpeg" alt="Robert Sösemann" style="width:120px;height:120px;border-radius:50%;border:4px solid var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.12);object-fit:cover;margin-bottom:1.2rem;">
     <h2 style="margin-bottom:0.5rem;">Danke! Questions?</h2>
@@ -892,6 +892,34 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// --- Per-slide countdown (bottom-right) ---
+const timerEl = document.createElement('div');
+timerEl.id = 'slide-timer';
+timerEl.style.cssText = 'position:fixed;right:14px;bottom:10px;z-index:9999;font:800 22px/1 ui-monospace,Menlo,Consolas,monospace;color:rgba(0,0,0,0.22);padding:4px 8px;letter-spacing:1px;pointer-events:none;user-select:none;transition:color .3s;';
+document.body.appendChild(timerEl);
+
+let timerSlide = -1, timerRemaining = 0, timerHandle = null;
+function fmt(s) { const neg = s < 0; const a = Math.abs(s|0); const m = (a/60)|0, r = a%60; return (neg?'-':'') + m + ':' + (r<10?'0':'') + r; }
+function renderTimer() {
+  timerEl.textContent = fmt(timerRemaining);
+  let c = 'rgba(0,0,0,0.22)';
+  if (timerRemaining <= -1)     c = 'rgba(198,40,40,1)';
+  else if (timerRemaining <= 0)  c = 'rgba(198,40,40,0.9)';
+  else if (timerRemaining <= 10) c = 'rgba(198,40,40,0.65)';
+  else if (timerRemaining <= 20) c = 'rgba(180,120,0,0.55)';
+  timerEl.style.color = c;
+}
+function startTimerForSlide(i) {
+  if (i === timerSlide) return;
+  timerSlide = i;
+  timerRemaining = parseInt(slides[i]?.dataset.seconds || '0', 10);
+  renderTimer();
+  if (timerHandle) clearInterval(timerHandle);
+  timerHandle = setInterval(() => { timerRemaining -= 1; renderTimer(); }, 1000);
+}
+window.addEventListener('scroll', () => { startTimerForSlide(current); });
+window.addEventListener('load', () => startTimerForSlide(0));
 
 // --- Auto-scale iframes to fill container height ---
 function scaleIframes() {

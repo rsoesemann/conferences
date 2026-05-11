@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:   #032D60;
+    --blue:   #0176D3;
+    --border: #D8DEE4;
+    --text:   #181818;
+    --soft:   #444;
+    --muted:  #888;
+    --green:  #2E7D32;
+    --red:    #C62828;
+    --tavily: #0176D3;
+    --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  body {
+    width: 540px; height: 750px;
+    background: transparent;
+    font-family: var(--font);
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 10px;
+    overflow: hidden;
+  }
+
+  /* ══════════════════════════════════════
+     SIDEBAR — Agentforce chat
+     ══════════════════════════════════════ */
+  .sidebar {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+  }
+  .sb-hdr {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .sb-hdr-left { display: flex; align-items: center; gap: 8px; }
+  .sb-logo {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sb-logo svg { width: 14px; height: 14px; fill: #fff; }
+  .sb-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .sb-actions { display: flex; gap: 7px; }
+  .sb-actions span { font-size: 13px; color: var(--muted); }
+
+  .chat { padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .msg { display: flex; gap: 8px; align-items: flex-start; }
+  .msg.user { flex-direction: row-reverse; }
+  .av {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .av-user { background: #4CAF50; }
+  .av-user svg { width: 14px; height: 14px; fill: #fff; }
+  .av-bot { background: var(--blue); }
+  .av-bot svg { width: 14px; height: 14px; fill: #fff; }
+  .bbl {
+    max-width: 360px; padding: 8px 12px;
+    border-radius: 10px; font-size: 13px; line-height: 1.45;
+    color: var(--text);
+  }
+  .bbl-user {
+    background: #E8F2FF;
+    border-radius: 10px 3px 10px 10px;
+  }
+  .bbl-user strong { color: var(--navy); }
+  .bbl-bot {
+    background: #F3F5F8;
+    border-radius: 3px 10px 10px 10px;
+  }
+  .bbl-bot strong { color: var(--navy); font-weight: 700; }
+  .bbl-bot .src {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 11px; color: var(--muted);
+    margin-top: 5px;
+    padding: 2px 8px;
+    background: rgba(1, 118, 211, 0.08);
+    border-radius: 10px;
+    border: 1px solid rgba(1, 118, 211, 0.25);
+  }
+  .bbl-bot .src .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--tavily);
+  }
+
+  .sb-input {
+    border-top: 1px solid var(--border); padding: 7px 10px;
+    background: #FAFBFC;
+  }
+  .sb-input-box {
+    border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 10px; font-size: 11px; color: var(--muted);
+    background: #fff;
+  }
+
+  /* ══════════════════════════════════════
+     ACTION TRACE — what the agent did
+     ══════════════════════════════════════ */
+  .section-title {
+    font-size: 15px; font-weight: 800;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+    color: var(--navy);
+  }
+  .section-title .icon {
+    width: 20px; height: 20px; border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--tavily);
+  }
+  .section-title .label-tag {
+    font-size: 10px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px;
+    background: #E8F2FF; color: var(--navy);
+    margin-left: auto;
+    letter-spacing: 0.3px;
+  }
+
+  .trace-block {
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: 12px;
+    color: var(--soft);
+    background: #F3F5F8;
+    border: 1px solid #DDE3EA;
+    border-radius: 8px;
+    padding: 9px 12px;
+    margin-bottom: 8px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .trace-block .kw  { color: var(--navy); font-weight: 700; }
+  .trace-block .str { color: #C62828; }
+  .trace-block .url { color: var(--blue); text-decoration: underline; }
+  .trace-block.response {
+    background: #FFFFFF;
+    border-color: #C8DCEF;
+  }
+  .trace-block.response .kw { color: var(--blue); }
+
+  .results { display: flex; flex-direction: column; gap: 6px; }
+  .result {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border-left: 4px solid var(--tavily);
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .result-title {
+    font-size: 14px; font-weight: 600; color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .result-snippet {
+    font-size: 12.5px; line-height: 1.45;
+    color: var(--soft);
+  }
+  .result-snippet .hl {
+    background: rgba(255, 235, 59, 0.55);
+    border-radius: 2px; padding: 0 3px;
+  }
+  .result-url {
+    font-size: 11px; color: var(--muted); margin-top: 4px;
+    font-family: 'Menlo', 'Consolas', monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR — user asks question + bot answers ═══ -->
+<div class="sidebar">
+  <div class="sb-hdr">
+    <div class="sb-hdr-left">
+      <div class="sb-logo">
+        <svg viewBox="0 0 24 24"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/></svg>
+      </div>
+      <span class="sb-title">My Org Butler</span>
+    </div>
+    <div class="sb-actions">
+      <span>ℹ</span>
+      <span>📌</span>
+      <span>✕</span>
+    </div>
+  </div>
+  <div class="chat">
+    <div class="msg user">
+      <div class="av av-user">
+        <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+      </div>
+      <div class="bbl bbl-user">Who is presenting in <strong>Prague</strong> today about <strong>Agentforce</strong> in English?</div>
+    </div>
+    <div class="msg bot">
+      <div class="av av-bot">
+        <svg viewBox="0 0 24 24"><path d="M13 3L4 14h7l-2 7 9-11h-7l2-7z"/></svg>
+      </div>
+      <div class="bbl bbl-bot">
+        According to the <strong>CzechDreamin&rsquo;26 agenda page</strong>, that must be <strong>Robert Sösemann</strong> &mdash; talk title &ldquo;Agentic now! How to make the best out of Agentforce&rdquo;.
+        <div class="src"><span class="dot"></span>via Tavily web search</div>
+      </div>
+    </div>
+  </div>
+  <div class="sb-input">
+    <div class="sb-input-box">Describe your task or ask a question...</div>
+  </div>
+</div>
+
+<!-- ═══ ACTION TRACE — Tavily call ═══ -->
+<div class="section">
+  <div class="section-title">
+    <div class="icon">↗</div>
+    SearchWeb &mdash; Tavily API call
+  </div>
+
+  <div class="trace-block"><span class="kw">POST</span> <span class="url">https://api.tavily.com/search</span>
+{
+  <span class="kw">"query"</span>: <span class="str">"Who is presenting in Prague today about Agentforce in English?"</span>,
+  <span class="kw">"include_answer"</span>: <span class="kw">true</span>
+}</div>
+
+  <div class="trace-block response"><span class="kw">200 OK</span>
+{
+  <span class="kw">"answer"</span>: <span class="str">"Robert Sösemann is presenting today in Prague at CzechDreamin'26 with the talk 'Agentic now! How to make the best out of Agentforce'."</span>,
+  <span class="kw">"results"</span>: [
+    { <span class="kw">"url"</span>: <span class="str">"czechdreamin.com/agenda/2026"</span> },
+    { <span class="kw">"url"</span>: <span class="str">"czechdreamin.com/speakers/robert-soesemann"</span> },
+    { <span class="kw">"url"</span>: <span class="str">"linkedin.com/in/rsoesemann"</span> }
+  ]
+}</div>
+</div>
+
+</body>
+</html>

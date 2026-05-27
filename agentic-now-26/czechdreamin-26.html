@@ -72,6 +72,148 @@ nav .nav-right img { height: 36px; }
 .slide::after,
 .slide::before { display: none; }
 
+
+/* --- SPONSORS SLIDE (slide 0) --- */
+.slide-sponsors {
+  background: var(--bg);
+  color: var(--dark);
+  position: relative;
+  padding: 5rem 4rem 4rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+.slide-sponsors::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0; right: -160px; left: 0;
+  height: 22vh;
+  background: url('czechdreamin-skyline.png') no-repeat right bottom;
+  background-size: auto 18vh;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+.sponsors-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.sponsors-title {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--blue);
+  margin: 0;
+  text-align: center;
+}
+.sponsors-tiers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 1.6rem;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.tier {
+  background: #fff;
+  border: 1.5px solid var(--blue);
+  border-radius: 4px;
+  padding: 1rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.tier-label {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.8rem;
+  color: var(--blue);
+  text-align: center;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+.tier-grid {
+  flex: 1;
+  display: grid;
+  gap: 1rem;
+  place-items: center;
+  min-height: 0;
+}
+.grid-1 { grid-template-columns: 1fr; }
+.grid-gold {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "enehano enehano"
+    "forvendi pdfbutler"
+    "nextview nextview";
+}
+.gold-enehano { grid-area: enehano; }
+.gold-forvendi { grid-area: forvendi; }
+.gold-pdfbutler { grid-area: pdfbutler; }
+.gold-nextview { grid-area: nextview; }
+.grid-silver {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.grid-silver .logo-slot:last-child {
+  grid-column: 1 / -1;
+}
+.logo-slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.5rem;
+}
+.logo-slot img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.tier-platinum .logo-slot img { max-height: 22vh; }
+.tier-gold .gold-enehano img { max-height: 10vh; }
+.tier-gold .gold-forvendi img,
+.tier-gold .gold-pdfbutler img { max-height: 14vh; }
+.tier-gold .gold-nextview img { max-height: 8vh; }
+.tier-silver .logo-slot img { max-height: 9vh; }
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1.6rem;
+  align-items: stretch;
+}
+.tier-demojam, .tier-thankyou {
+  background: #fff;
+  border: 1.5px solid var(--blue);
+  border-radius: 4px;
+  padding: 0.9rem 1.4rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-height: 18vh;
+}
+.tier-thankyou { border: none; background: transparent; }
+.demojam-row, .thankyou-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-items: center;
+  flex: 1;
+}
+.demojam-row .logo-slot img,
+.thankyou-row .logo-slot img { max-height: 10vh; }
+
 /* --- COVER SLIDE --- */
 .slide-cover {
   background: var(--bg);
@@ -543,8 +685,66 @@ nav .nav-right img { height: 36px; }
   <div class="nav-right"><img src="../images/aquiva-logo-nav.png" alt="Aquiva"></div>
 </nav>
 
+<!-- SPONSORS — slide 0 ================================================ -->
+<div class="slide slide-sponsors" data-slide="0" data-seconds="0" data-screen-label="00 Sponsors">
+  <div class="sponsors-inner">
+    <h2 class="sponsors-title">Our Sponsors</h2>
+
+    <div class="sponsors-tiers">
+      <div class="tier tier-platinum">
+        <div class="tier-label">Platinum</div>
+        <div class="tier-grid grid-1">
+          <div class="logo-slot"><img src="sponsors/image10.png" alt="autorabit"></div>
+        </div>
+      </div>
+
+      <div class="tier tier-gold">
+        <div class="tier-label">Gold</div>
+        <div class="tier-grid grid-gold">
+          <div class="logo-slot gold-enehano"><img src="sponsors/image12.png" alt="enehano"></div>
+          <div class="logo-slot gold-forvendi"><img src="sponsors/image11.png" alt="ForVendi"></div>
+          <div class="logo-slot gold-pdfbutler"><img src="sponsors/image22.png" alt="PDF Butler"></div>
+          <div class="logo-slot gold-nextview"><img src="sponsors/image13.png" alt="nextview"></div>
+        </div>
+      </div>
+
+      <div class="tier tier-silver">
+        <div class="tier-label">Silver</div>
+        <div class="tier-grid grid-silver">
+          <div class="logo-slot"><img src="sponsors/image14.png" alt="TITAN"></div>
+          <div class="logo-slot"><img src="sponsors/image15.png" alt="SurveyVista"></div>
+          <div class="logo-slot"><img src="sponsors/image19.png" alt="CGI"></div>
+          <div class="logo-slot"><img src="sponsors/image17.png" alt="ADDA IT Solutions"></div>
+          <div class="logo-slot"><img src="sponsors/image18.png" alt="Dragonfly 360"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="tier tier-demojam">
+        <div class="tier-label">DemoJam Competitors</div>
+        <div class="demojam-row">
+          <div class="logo-slot"><img src="sponsors/image14.png" alt="TITAN"></div>
+          <div class="logo-slot"><img src="sponsors/image15.png" alt="SurveyVista"></div>
+          <div class="logo-slot"><img src="sponsors/image16.png" alt="Nubes Tech"></div>
+          <div class="logo-slot"><img src="sponsors/image22.png" alt="PDF Butler"></div>
+        </div>
+      </div>
+      <div class="tier tier-thankyou">
+        <div class="tier-label">Thank You</div>
+        <div class="thankyou-row">
+          <div class="logo-slot"><img src="sponsors/image21.png" alt="Plauti"></div>
+          <div class="logo-slot"><img src="sponsors/image20.png" alt="Salesforce Trailblazer Community"></div>
+          <div class="logo-slot"><img src="sponsors/image23.png" alt="CIO Applications"></div>
+          <div class="logo-slot"><img src="sponsors/image16.png" alt="Nubes Tech"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- COVER -->
-<div class="slide slide-cover" data-slide="0" data-seconds="60">
+<div class="slide slide-cover" data-slide="1" data-seconds="60">
   <img src="czechdreamin-leaf.png" alt="" class="leaf-deco">
   <div class="slide-inner">
     <div class="speaker-info">
@@ -564,7 +764,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- INTRO -->
-<div class="slide slide-intro slide-tip" data-slide="1" data-seconds="180">
+<div class="slide slide-intro slide-tip" data-slide="2" data-seconds="180">
   <div class="slide-inner reveal">
     <div class="tip-header">
       <h2 class="tip-h"><span class="tip-num">Agentforce now.</span> Here&rsquo;s why</h2>
@@ -590,7 +790,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 1 ================================================ -->
-<div class="slide slide-tip" data-slide="2" data-seconds="300">
+<div class="slide slide-tip" data-slide="3" data-seconds="300">
   <div class="bg-num">1</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip1.html" title="Tip 1 – bold generic actions" style="--mock-w:680px;--mock-h:660px"></iframe>
@@ -620,7 +820,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 2 ================================================ -->
-<div class="slide slide-tip" data-slide="3" data-seconds="300">
+<div class="slide slide-tip" data-slide="4" data-seconds="300">
   <div class="bg-num">2</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip2.html" title="Tip 2 – API calls" style="--mock-w:680px;--mock-h:760px"></iframe>
@@ -649,7 +849,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 3 — DATA CLOUD ================================================ -->
-<div class="slide slide-tip" data-slide="4" data-seconds="300">
+<div class="slide slide-tip" data-slide="5" data-seconds="300">
   <div class="bg-num">3</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
     <iframe src="mocks/mock-tip3.html" title="Tip 3 – Data Cloud" style="--mock-w:540px;--mock-h:750px"></iframe>
@@ -679,7 +879,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 4 — WEB SEARCH ================================================ -->
-<div class="slide slide-tip" data-slide="5" data-seconds="300">
+<div class="slide slide-tip" data-slide="6" data-seconds="300">
   <div class="bg-num">4</div>
   <div class="tip-showcase showcase-mock showcase-no-fade showcase-narrow">
     <iframe src="mocks/mock-tip-tavily.html" title="Tip 4 – Tavily Web Search" style="--mock-w:540px;--mock-h:750px"></iframe>
@@ -709,7 +909,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 5 — MEMORY ================================================ -->
-<div class="slide slide-tip" data-slide="6" data-seconds="300">
+<div class="slide slide-tip" data-slide="7" data-seconds="300">
   <div class="bg-num">5</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip5.html" title="Tip 5 – agent memory" style="--mock-w:680px;--mock-h:700px"></iframe>
@@ -739,7 +939,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 6 — HEADLESS ================================================ -->
-<div class="slide slide-tip" data-slide="7" data-seconds="300">
+<div class="slide slide-tip" data-slide="8" data-seconds="300">
   <div class="bg-num">6</div>
   <div class="tip-showcase showcase-mock showcase-no-fade">
     <iframe src="mocks/mock-tip6.html" title="Tip 6 – headless agent" style="--mock-w:540px;--mock-h:800px"></iframe>
@@ -768,7 +968,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- TIP 7 — TESTING ================================================ -->
-<div class="slide slide-tip" data-slide="8" data-seconds="300">
+<div class="slide slide-tip" data-slide="9" data-seconds="300">
   <div class="bg-num">7</div>
   <div class="tip-showcase showcase-mock">
     <iframe src="mocks/mock-tip7.html" title="Tip 7 – Testing" style="--mock-w:680px;--mock-h:780px"></iframe>
@@ -798,7 +998,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- SUMMARY ================================================ -->
-<div class="slide slide-tip slide-tip-blue" data-slide="9" data-seconds="300">
+<div class="slide slide-tip slide-tip-blue" data-slide="10" data-seconds="300">
   <div class="missing-nums" aria-hidden="true">
     <span class="mn mn-8">8</span>
     <span class="mn mn-9">9</span>
@@ -830,7 +1030,7 @@ nav .nav-right img { height: 36px; }
 </div>
 
 <!-- CLOSING -->
-<div class="slide slide-closing" data-slide="10" data-seconds="360">
+<div class="slide slide-closing" data-slide="11" data-seconds="360">
   <div class="slide-inner reveal" style="display:flex; flex-direction:column; align-items:center;">
     <img src="../images/robert.jpeg" alt="Robert Sösemann" style="width:120px;height:120px;border-radius:50%;border:4px solid var(--white);box-shadow:0 4px 16px rgba(0,0,0,0.12);object-fit:cover;margin-bottom:1.2rem;">
     <h2 style="margin-bottom:0.5rem;">Danke! Questions?</h2>
@@ -899,25 +1099,34 @@ timerEl.id = 'slide-timer';
 timerEl.style.cssText = 'position:fixed;right:14px;bottom:10px;z-index:9999;font:800 22px/1 ui-monospace,Menlo,Consolas,monospace;color:rgba(0,0,0,0.22);padding:4px 8px;letter-spacing:1px;pointer-events:none;user-select:none;transition:color .3s;';
 document.body.appendChild(timerEl);
 
-let timerSlide = -1, timerRemaining = 0, timerHandle = null;
+let timerSlide = -1, timerStartMs = 0, timerTotal = 0, timerHandle = null;
 function fmt(s) { const neg = s < 0; const a = Math.abs(s|0); const m = (a/60)|0, r = a%60; return (neg?'-':'') + m + ':' + (r<10?'0':'') + r; }
 function renderTimer() {
-  timerEl.textContent = fmt(timerRemaining);
+  if (timerTotal <= 0) { timerEl.style.display = 'none'; return; }
+  timerEl.style.display = '';
+  // Compute remaining from wall clock so background-tab throttling doesn't matter
+  const elapsed = (Date.now() - timerStartMs) / 1000;
+  const remaining = Math.round(timerTotal - elapsed);
+  timerEl.textContent = fmt(remaining);
   let c = 'rgba(0,0,0,0.22)';
-  if (timerRemaining <= -1)     c = 'rgba(198,40,40,1)';
-  else if (timerRemaining <= 0)  c = 'rgba(198,40,40,0.9)';
-  else if (timerRemaining <= 10) c = 'rgba(198,40,40,0.65)';
-  else if (timerRemaining <= 20) c = 'rgba(180,120,0,0.55)';
+  if (remaining <= -1)     c = 'rgba(198,40,40,1)';
+  else if (remaining <= 0)  c = 'rgba(198,40,40,0.9)';
+  else if (remaining <= 10) c = 'rgba(198,40,40,0.65)';
+  else if (remaining <= 20) c = 'rgba(180,120,0,0.55)';
   timerEl.style.color = c;
 }
 function startTimerForSlide(i) {
   if (i === timerSlide) return;
   timerSlide = i;
-  timerRemaining = parseInt(slides[i]?.dataset.seconds || '0', 10);
+  timerTotal = parseInt(slides[i]?.dataset.seconds || '0', 10);
+  timerStartMs = Date.now();
   renderTimer();
   if (timerHandle) clearInterval(timerHandle);
-  timerHandle = setInterval(() => { timerRemaining -= 1; renderTimer(); }, 1000);
+  timerHandle = setInterval(renderTimer, 1000);
 }
+// Re-render when tab becomes visible again (clock-based, so it self-corrects)
+document.addEventListener('visibilitychange', () => { if (!document.hidden) renderTimer(); });
+window.addEventListener('focus', renderTimer);
 window.addEventListener('scroll', () => { startTimerForSlide(current); });
 window.addEventListener('load', () => startTimerForSlide(0));
 
